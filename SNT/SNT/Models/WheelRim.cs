@@ -1,4 +1,5 @@
 ﻿using SNT.Models.Enums;
+using SNT.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SNT.Models
 {
-    public class WheelRim
+    public class WheelRim : IProduct
     {
         public string Id { get; set; }
 
@@ -30,5 +31,7 @@ namespace SNT.Models
         public int Offset { get; set; }
 
         public string Material { get; set; }
+
+        public string Description { get; set; }
     }
 }

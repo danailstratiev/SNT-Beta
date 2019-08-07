@@ -1,4 +1,5 @@
 ﻿using SNT.Models.Enums;
+using SNT.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SNT.Models
 {
-    public class Tyre
+    public class Tyre : IProduct
     {
         public string Id { get; set; }
 
