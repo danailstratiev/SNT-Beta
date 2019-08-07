@@ -8,6 +8,8 @@ namespace SNT.Models
 {
     public class ShoppingBag
     {
+        public string Id { get; set; }
+
         public List<IProduct> Products { get; set; }
 
         public decimal TotalPrice { get; set; }
