@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace SNT.Models.Enums
 {
-    public enum TyreType
+    public enum SeasonType
     {
         Summer = 1,
-        Winter = 2
+        Winter = 2,
+        AllSeasons = 3
     }
 }

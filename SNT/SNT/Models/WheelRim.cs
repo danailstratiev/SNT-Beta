@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SNT.Models
 {
-    public class Tyre
+    public class WheelRim
     {
         public string Id { get; set; }
 
@@ -14,18 +14,21 @@ namespace SNT.Models
 
         public string Brand { get; set; }
 
-        public SeasonType Type { get; set; }
-
         public AvailabilityStatus Status { get; set; }
 
+        public SeasonType Type { get; set; }
+        
         public decimal Price { get; set; }
 
-        public int Width { get; set; }
+        //Междуболтово разстояние (PCD)
+        public string PCD { get; set; }
 
-        public int Ratio { get; set; }
+        //Централен отвор
+        public double CentralLukeDiameter { get; set; }
 
-        public int Diameter { get; set; }
+        //Офсет (ЕТ)
+        public int Offset { get; set; }
 
-        public string Description { get; set; }
+        public string Material { get; set; }
     }
 }
