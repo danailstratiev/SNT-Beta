@@ -1,0 +1,127 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font: 16px/1.5 Verdana, sans-serif;
+    background-color: #D12024;
+}
+
+
+ul li {
+    list-style-type: none;
+}
+
+.site {
+    max-width: 60rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.intro {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.intro img{
+    max-height: 30.6rem;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+body{
+    /* padding: 2rem; */
+}
+
+.container {
+    background: #D12024;
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.item {
+    background: #bfbfbf;
+    padding: 0.5em;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.item + .item {
+    margin-left: 0.5rem;
+}
+
+
+.site-footer,
+.site-header {
+    background: #B7152D;
+    color: #fff;
+    display: flex;
+    position: relative;
+    overflow:hidden;
+    /* border-radius: 0.5em; */
+    /* margin-bottom: 0.1rem; */
+}
+
+.site-header h1 {
+    font-size: 3rem;
+}
+
+.site-header h1 a {
+    padding: 0 1rem;
+}
+
+.site-header a {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+}
+
+.site-header nav {
+    display: flex;
+    margin-left: auto;
+}
+
+.site-header nav ul {
+    display: flex;
+}
+
+.site-header nav li {
+    list-style: none outside;
+    display: flex;
+
+}
+
+.site-header nav a:hover {
+    color: blue;
+    background: rebeccapurple
+}
+
+.site-header nav a {
+    display: flex;
+    align-items: center;    
+    padding: 0 1em;
+}
+
+.site-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.site-footer{
+    padding: 1rem;
+    margin-top: auto;
+    margin-top: 1rem;
+}
