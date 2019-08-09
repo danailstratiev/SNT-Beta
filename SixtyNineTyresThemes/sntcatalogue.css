@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    padding: 2rem;
+    /* padding: 2rem; */
 }
 
 ul li {
@@ -32,8 +32,8 @@ ul li {
     display: flex;
     position: relative;
     overflow:hidden;
-    border-radius: 0.5em;
-    margin-bottom: 2rem;
+    /* border-radius: 0.5em; */
+    margin-bottom: 0.1rem;
 }
 
 .site-header h1 {
