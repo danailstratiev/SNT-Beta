@@ -10,7 +10,8 @@ namespace SNT.Models
     {
         public string Id { get; set; }
 
-        public List<IProduct> Products { get; set; }
+        public List<Tyre> Tyres { get; set; }
+        public List<WheelRim> WheelRims { get; set; }
 
         public decimal TotalPrice { get; set; }
     }

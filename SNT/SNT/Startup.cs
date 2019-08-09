@@ -69,6 +69,9 @@ namespace SNT
 
 
             app.UseAuthentication();
+            //This method maps Controllers and Actions
+            app.UseMvcWithDefaultRoute();
+
 
             app.UseMvc(routes =>
             {
