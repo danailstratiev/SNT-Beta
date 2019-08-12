@@ -61,7 +61,32 @@ namespace SNT
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetRequiredService<SntDbContext>())
+                {
+                    context.Database.EnsureCreated();
+
+                    if (!context.Roles.Any())
+                    {
+                        context.Roles.Add(new IdentityRole
+                        {
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
+
+                        context.Roles.Add(new IdentityRole
+                        {
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
+
+                        context.SaveChanges();
+                    }
+                }
+            }
+
+                    app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

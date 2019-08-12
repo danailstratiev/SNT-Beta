@@ -8,6 +8,12 @@ namespace SNT.Models
 {
     public class SntUser : IdentityUser
     {
+        public SntUser()
+        {
+            this.ShoppingBag = new ShoppingBag();
+            this.MyReceipts = new List<SntReceipt>();
+        }
+
         public string Username { get; set; }
 
         public string Password { get; set; }
