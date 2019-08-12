@@ -65,9 +65,6 @@ namespace SNT
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-          
-
-
             app.UseAuthentication();
             //This method maps Controllers and Actions
             app.UseMvcWithDefaultRoute();
