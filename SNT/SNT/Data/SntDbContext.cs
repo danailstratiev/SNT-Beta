@@ -14,7 +14,7 @@ namespace SNT.Data
         public DbSet<Tyre> Tyres { get; set; }
         public DbSet<WheelRim> WheelRims { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<ShoppingBag> ShoppingBags { get; set; }
+        public DbSet<ShoppingBag> ShoppingBag { get; set; }
         public DbSet<SntReceipt> SntReceipts { get; set; }
 
         public SntDbContext(DbContextOptions<SntDbContext> options)
@@ -24,7 +24,7 @@ namespace SNT.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=LAPTOP-7FT7CTPS\\SQLEXPRESS;Database=SixtyNineDB;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=SixtyNineDB;Trusted_Connection=true");
         }
     }
 }
