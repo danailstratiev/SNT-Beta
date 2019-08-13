@@ -14,17 +14,7 @@ namespace SNT.Models
             this.MyReceipts = new List<SntReceipt>();
         }
 
-        public string Username { get; set; }
-
-        public string Password { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string PhoneNumber { get; set; }
-
-        public string Address { get; set; }
+        public string ShoppingBagId { get; set; }
 
         public ShoppingBag ShoppingBag { get; set; }
 
