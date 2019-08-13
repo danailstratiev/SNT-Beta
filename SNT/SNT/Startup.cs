@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using SNT.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SNT.Models;
 
 namespace SNT
 {
@@ -38,9 +39,9 @@ namespace SNT
             services.AddDbContext<SntDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<SntDbContext>();
+            services.AddIdentity<SntUser, IdentityRole>()
+                .AddEntityFrameworkStores<SntDbContext>()
+                .AddDefaultTokenProviders();
 
          
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
