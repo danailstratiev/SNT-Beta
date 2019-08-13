@@ -27,14 +27,13 @@ namespace SNT.Areas.Identity.Pages.Account
             UserManager<SntUser> userManager,
             RoleManager<IdentityRole> roleManager,
             SignInManager<SntUser> signInManager,
-            ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            ILogger<RegisterModel> logger)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _logger = logger;
-            _emailSender = emailSender;
+            //_emailSender = emailSender;
         }
 
         [BindProperty]
