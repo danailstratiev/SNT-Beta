@@ -14,6 +14,7 @@ using SNT.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SNT.Models;
+using SNT.Services;
 
 namespace SNT
 {
@@ -55,6 +56,8 @@ namespace SNT
 
                 options.User.RequireUniqueEmail = true;
             });
+
+            services.AddTransient<ITyreService, TyreService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -111,8 +114,12 @@ namespace SNT
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "area",
+                    name: "areas",
                     template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

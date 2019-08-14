@@ -14,5 +14,7 @@ namespace SNT.Areas.Administrator.Controllers
         {
             return View();
         }
+
+
     }
 }

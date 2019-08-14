@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SNT.Services
 {
-    public class TyreService
+    public class TyreService : ITyreService
     {
         private SntDbContext context;
 
@@ -47,9 +47,69 @@ namespace SNT.Services
                 }
             }
 
-            context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return true;
+        }
+
+        public Task<Tyre> EditTyre(Tyre tyre)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllAvailableTyres()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllSummerTyres()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllTyresByBrand()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllTyresByDiameter()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllTyresByPriceAscending()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllTyresByPriceDescending()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllTyresByRatio()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllTyresByWidth()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllUnavailableTyres()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<Tyre> GetAllWinterTyres()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Tyre> GetTyreById(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

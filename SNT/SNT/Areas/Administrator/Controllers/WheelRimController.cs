@@ -8,9 +8,6 @@ namespace SNT.Areas.Administrator.Controllers
 {
     public class WheelRimController : AdminController
     {
-        public async Task<IActionResult> Create()
-        {
-            return View();
-        }
+      
     }
 }

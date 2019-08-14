@@ -20,7 +20,7 @@ namespace SNT.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=SixtyNineDB;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=SntDB;Trusted_Connection=true");
         }
     }
 }
