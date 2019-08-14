@@ -16,9 +16,7 @@ namespace SNT.Models
         public string Brand { get; set; }
 
         public AvailabilityStatus Status { get; set; }
-
-        public SeasonType Type { get; set; }
-        
+                
         public decimal Price { get; set; }
 
         //Междуболтово разстояние (PCD)

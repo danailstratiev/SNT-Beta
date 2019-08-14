@@ -28,5 +28,7 @@ namespace SNT.Models
         public int Diameter { get; set; }
 
         public string Description { get; set; }
+
+        public int YearOfProduction { get; set; }
     }
 }
