@@ -30,5 +30,7 @@ namespace SNT.Models
         public string Description { get; set; }
 
         public int YearOfProduction { get; set; }
+
+        public int Quantity { get; set; }
     }
 }
