@@ -8,7 +8,7 @@ namespace SNT.Services
 {
     public interface IWheelRimService
     {
-        Task<WheelRim> EditTyre(WheelRim wheelRim);
+        Task<WheelRim> EditWheelRim(WheelRim wheelRim);
 
         Task<WheelRim> GetWheelRimById(string id);
 

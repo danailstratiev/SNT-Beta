@@ -73,7 +73,7 @@ namespace SNT.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var isRoot = _userManager.Users.Any();
+                var isRoot = !_userManager.Users.Any();
                 
                 var user = new SntUser
                 {
@@ -82,7 +82,7 @@ namespace SNT.Areas.Identity.Pages.Account
                     ShoppingBag = new ShoppingBag()
                 };
 
-                user.ShoppingBag.Id = user.Id;
+                user.ShoppingBag.UserId = user.Id;
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -112,7 +112,7 @@ namespace SNT.Areas.Identity.Pages.Account
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    return LocalRedirect(returnUrl);
+                    return Redirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
                 {
