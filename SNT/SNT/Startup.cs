@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SNT.Models;
 using SNT.Services;
+using CloudinaryDotNet;
 
 namespace SNT
 {
@@ -43,6 +44,15 @@ namespace SNT
             services.AddIdentity<SntUser, IdentityRole>()
                 .AddEntityFrameworkStores<SntDbContext>()
                 .AddDefaultTokenProviders();
+
+            Account cloudinaryCredentials = new Account(
+              this.Configuration["Cloudinary:CloudName"],
+              this.Configuration["Cloudinary:ApiKey"],
+              this.Configuration["Cloudinary:ApiSecret"]);
+
+            Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
+
+            services.AddSingleton(cloudinaryUtility);
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -76,7 +86,7 @@ namespace SNT
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+                      
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetRequiredService<SntDbContext>())
