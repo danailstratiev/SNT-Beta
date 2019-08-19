@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace SNT.Areas.Administrator.Controllers
 {
     [Authorize(Roles = "Admin")]
+    [Area("Administration")]
     public abstract class AdminController : Controller
     {
         public IActionResult Index()

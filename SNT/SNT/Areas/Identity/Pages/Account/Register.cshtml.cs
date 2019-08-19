@@ -73,7 +73,7 @@ namespace SNT.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var isRoot = !_userManager.Users.Any();
+                var areThereUsers = !_userManager.Users.Any();
                 
                 var user = new SntUser
                 {
@@ -88,7 +88,7 @@ namespace SNT.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    if (isRoot)
+                    if (areThereUsers)
                     {
                         await _userManager.AddToRoleAsync(user, "Admin");
                     }
@@ -97,18 +97,19 @@ namespace SNT.Areas.Identity.Pages.Account
                         await _userManager.AddToRoleAsync(user, "User");
                     }
 
-                    _logger.LogInformation("User created a new account with password.");
+                   // _logger.LogInformation("User created a new account with password.");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { userId = user.Id, code = code },
-                        protocol: Request.Scheme);
-
+                    #region Email
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var callbackUrl = Url.Page(
+                    //    "/Account/ConfirmEmail",
+                    //    pageHandler: null,
+                    //    values: new { userId = user.Id, code = code },
+                    //    protocol: Request.Scheme);
                     //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                     //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    #endregion
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
