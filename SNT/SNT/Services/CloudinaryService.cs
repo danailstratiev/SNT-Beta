@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 
 namespace SNT.Services
@@ -16,9 +18,30 @@ namespace SNT.Services
             this.cloudinaryUtility = cloudinaryUtility;
         }
 
-        public Task<string> UploadPictureAsync(IFormFile pictureFile, string fileName)
+        public async Task<string> UploadPictureAsync(IFormFile pictureFile, string fileName)
         {
-            throw new NotImplementedException();
+            byte[] destinationData;
+
+            using (var stream = new MemoryStream())
+            {
+                await pictureFile.CopyToAsync(stream);
+                destinationData = stream.ToArray();
+            }
+
+            UploadResult uploadResult = null;
+
+            using (var stream = new MemoryStream(destinationData))
+            {
+                ImageUploadParams uploadParams = new ImageUploadParams
+                {
+                    Folder = "tyres_images",
+                    File = new FileDescription(fileName, stream)
+                };
+
+                uploadResult = this.cloudinaryUtility.Upload(uploadParams);
+            }
+
+            return uploadResult?.SecureUri.AbsoluteUri;
         }
     }
 }
