@@ -8,6 +8,7 @@
 
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="CloudinaryDotNet" Version="1.8.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
@@ -27,7 +28,6 @@
     <Folder Include="Areas\Administrator\Models\" />
     <Folder Include="Areas\Administrator\Views\WheelRims\" />
     <Folder Include="BindingModels\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\WheelRims\" />
     <Folder Include="Views\Tyres\" />
   </ItemGroup>

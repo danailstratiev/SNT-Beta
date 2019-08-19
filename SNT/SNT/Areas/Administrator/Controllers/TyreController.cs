@@ -18,12 +18,12 @@ namespace SNT.Areas.Administrator.Controllers
         }
 
         [HttpGet("/Administrator/Types/Create")]
-        public async Task<IActionResult> CreateType()
+        public async Task<IActionResult> CreateTyre()
         {
             return this.View("Type/Create");
         }
 
-        [HttpPost("/Administrator/Types/Create")]
+        [HttpPost("/Administrator/Tyres/Create")]
         public async Task <IActionResult> Create(Tyre tyre)
         {
             return null;
