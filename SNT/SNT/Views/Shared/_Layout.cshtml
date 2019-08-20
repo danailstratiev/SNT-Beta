@@ -19,26 +19,59 @@
     <link rel="stylesheet" href="~/css/sntmain.css">
 </head>
 <body>
-    <header class="site-header">
-        <h1 class="site-title">
-            <a href="/">69Tyres</a>
-        </h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/Home/About">About</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Promotions</a></li>
-                <li><a href="#">Contacts</a></li>
-                <li><a href="/Identity/Account/Login">Log in</a></li>
-                <li><a href="/Identity/Account/Register">Register</a></li>
+    @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+    {
+        <header class="site-header">
+            <h1 class="site-title">
+                <a href="/">69Tyres</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="/Administrator/Tyres/Create">Create Tyre</a></li>
+                    <li><a href="/Identity/Account/Logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+    }
+    else if (this.User.Identity.IsAuthenticated && this.User.IsInRole("User"))
+    {
+        <header class="site-header">
+            <h1 class="site-title">
+                <a href="/">69Tyres</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Home/About">About</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Promotions</a></li>
+                    <li><a href="/Identity/Account/Logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+    }
+    else
+    {
+        <header class="site-header">
+            <h1 class="site-title">
+                <a href="/">69Tyres</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Home/About">About</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Promotions</a></li>
+                    <li><a href="#">Contacts</a></li>
+                    <li><a href="/Identity/Account/Login">Log in</a></li>
+                    <li><a href="/Identity/Account/Register">Register</a></li>
 
-            </ul>
-        </nav>
-    </header>
-
-  
-
+                </ul>
+            </nav>
+        </header>
+    }
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
