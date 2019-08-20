@@ -1,5 +1,6 @@
 ﻿using SNT.Data;
 using SNT.Models;
+using SNT.ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,35 +16,15 @@ namespace SNT.Services
         {
             this.context = context;
         }
+        
+        public async Task<bool> Create(TyreServiceModel tyreServiceModel)
+        {            
+            Tyre tyre = AutoMapper.Mapper.Map<Tyre>(tyreServiceModel);
 
-        public async Task<bool> Create(Tyre newTyre)
-        {
-            var foundtyre = this.context.Tyres.FirstOrDefault(x => x.Id == newTyre.Id);
+            context.Tyres.Add(tyre);
+            int result = await context.SaveChangesAsync();
 
-            if (foundtyre == null)
-            {
-                var tyre = new Tyre
-                {
-                    Brand = newTyre.Brand,
-                    Model = newTyre.Model,
-                    Type = newTyre.Type,
-                    Status = newTyre.Status,
-                    Price = newTyre.Price,
-                    Width = newTyre.Width,
-                    Ratio = newTyre.Ratio,
-                    Diameter = newTyre.Diameter,
-                    Description = newTyre.Description,
-                    YearOfProduction = newTyre.YearOfProduction,
-                };
-            }
-            else
-            {
-              
-            }
-
-            await context.SaveChangesAsync();
-
-            return true;
+            return result > 0;
         }
 
         public Task<Tyre> EditTyre(Tyre tyre)

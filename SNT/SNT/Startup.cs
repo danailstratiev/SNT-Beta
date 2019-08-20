@@ -73,6 +73,7 @@ namespace SNT
             });
 
             services.AddTransient<ITyreService, TyreService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

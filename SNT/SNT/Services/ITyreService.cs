@@ -1,4 +1,5 @@
 ﻿using SNT.Models;
+using SNT.ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace SNT.Services
 {
     public interface ITyreService
     {
+        Task<bool> Create(TyreServiceModel tyreServiceModel);
+
         Task<Tyre> EditTyre(Tyre tyre);
 
         Task<Tyre> GetTyreById(string id);

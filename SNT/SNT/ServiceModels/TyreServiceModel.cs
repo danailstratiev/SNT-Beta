@@ -22,6 +22,8 @@ namespace SNT.ServiceModels
 
         public decimal Price { get; set; }
 
+        public string Picture { get; set; }
+
         public int Width { get; set; }
 
         public int Ratio { get; set; }
