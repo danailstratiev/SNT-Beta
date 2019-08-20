@@ -16,6 +16,11 @@ using Microsoft.Extensions.DependencyInjection;
 using SNT.Models;
 using SNT.Services;
 using CloudinaryDotNet;
+using SNT.Services.Mapping;
+using SNT.InputModels;
+using System.Reflection;
+using SNT.ViewModels;
+using SNT.ServiceModels;
 
 namespace SNT
 {
@@ -75,6 +80,11 @@ namespace SNT
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            AutoMapperConfig.RegisterMappings(
+               typeof(TyreCreateInputModel).GetTypeInfo().Assembly,
+               typeof(TyreViewModel).GetTypeInfo().Assembly,
+               typeof(TyreServiceModel).GetTypeInfo().Assembly);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

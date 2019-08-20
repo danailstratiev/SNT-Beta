@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SNT.Areas.Administrator.Controllers
+namespace SNT.Areas.Administration.Controllers
 {
     [Authorize(Roles = "Admin")]
     [Area("Administration")]

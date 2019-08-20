@@ -1,23 +1,17 @@
-﻿using SNT.Models.Enums;
-using SNT.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SNT.Models
+namespace SNT.ViewModels
 {
-    public class Tyre : IProduct
+    public class TyreViewModel
     {
         public string Id { get; set; }
 
         public string Model { get; set; }
 
         public string Brand { get; set; }
-
-        public SeasonType Type { get; set; }
-
-        public AvailabilityStatus Status { get; set; }
 
         public decimal Price { get; set; }
 
@@ -28,8 +22,6 @@ namespace SNT.Models
         public int Ratio { get; set; }
 
         public int Diameter { get; set; }
-
-        public string Description { get; set; }
 
         public int YearOfProduction { get; set; }
 

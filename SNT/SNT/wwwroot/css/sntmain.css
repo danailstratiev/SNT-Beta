@@ -35,8 +35,13 @@ ul li {
     padding: 0 1rem;
 }
 
-body{
-    /* padding: 2rem; */
+body {
+     margin: 1rem; 
+}
+
+main {
+    margin: 2rem;
+    align-items: center;
 }
 
 .container {

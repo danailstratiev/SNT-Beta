@@ -34,17 +34,11 @@ namespace SNT.Services
                     Diameter = newTyre.Diameter,
                     Description = newTyre.Description,
                     YearOfProduction = newTyre.YearOfProduction,
-                    Quantity = newTyre.Quantity
                 };
             }
             else
             {
-                foundtyre.Quantity += newTyre.Quantity;
-
-                if (foundtyre.Quantity > 0)
-                {
-                    foundtyre.Status = Models.Enums.AvailabilityStatus.InStock;
-                }
+              
             }
 
             await context.SaveChangesAsync();

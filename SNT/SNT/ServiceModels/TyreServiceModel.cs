@@ -1,13 +1,14 @@
-﻿using SNT.Models.Enums;
-using SNT.Models.Interfaces;
+﻿using SNT.Models;
+using SNT.Models.Enums;
+using SNT.Services.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SNT.Models
+namespace SNT.ServiceModels
 {
-    public class Tyre : IProduct
+    public class TyreServiceModel : IMapFrom<Tyre>, IMapTo<Tyre>
     {
         public string Id { get; set; }
 
@@ -21,8 +22,6 @@ namespace SNT.Models
 
         public decimal Price { get; set; }
 
-        public string Picture { get; set; }
-
         public int Width { get; set; }
 
         public int Ratio { get; set; }
@@ -32,6 +31,5 @@ namespace SNT.Models
         public string Description { get; set; }
 
         public int YearOfProduction { get; set; }
-
     }
 }

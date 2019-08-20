@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using SNT.Models;
 using SNT.Services;
 
-namespace SNT.Areas.Administrator.Controllers
+namespace SNT.Areas.Administration.Controllers
 {
     public class TyreController : AdminController
     {
@@ -17,16 +17,16 @@ namespace SNT.Areas.Administrator.Controllers
             this.tyreService = tyreService;
         }
 
-        [HttpGet("/Administrator/Types/Create")]
-        public async Task<IActionResult> CreateTyre()
+        [HttpGet("/Administration/Tyres/Create")]
+        public async Task<IActionResult> Create()
         {
-            return this.View("Tyre/Create");
+            return this.View("Tyres/Create");
         }
 
-        [HttpPost("/Administrator/Tyres/Create")]
+        [HttpPost("/Administration/Tyres/Create")]
         public async Task <IActionResult> Create(Tyre tyre)
         {
-            return null;
+            return this.View("Tyres/Create");            
         }
     }
 }
