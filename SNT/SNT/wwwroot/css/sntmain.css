@@ -36,11 +36,11 @@ ul li {
 }
 
 body {
-     margin: 1rem; 
+     margin: auto;
 }
 
 main {
-    margin: 2rem;
+    /*margin: 2rem;*/
     align-items: center;
 }
 
