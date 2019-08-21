@@ -11,31 +11,28 @@ namespace SNT.Services
     {
         Task<bool> Create(TyreServiceModel tyreServiceModel);
 
-        Task<Tyre> EditTyre(Tyre tyre);
+        Task<TyreServiceModel> EditTyre(Tyre tyre);
 
-        Task<Tyre> GetTyreById(string id);
+       TyreServiceModel GetTyreById(string id);
 
-        IQueryable<Tyre> GetAllTyresByPriceAscending();
+        IQueryable<TyreServiceModel> GetAllTyresByPriceAscending();
 
-        IQueryable<Tyre> GetAllTyresByPriceDescending();
+        IQueryable<TyreServiceModel> GetAllTyresByPriceDescending();
 
-        IQueryable<Tyre> GetAllSummerTyres();
+        IQueryable<TyreServiceModel> GetAllSummerTyres();
 
-        IQueryable<Tyre> GetAllWinterTyres();
+        IQueryable<TyreServiceModel> GetAllWinterTyres();
 
-        IQueryable<Tyre> GetAllTyresByBrand();
+        IQueryable<TyreServiceModel> GetAllTyresByBrand();
 
-        IQueryable<Tyre> GetAllTyresByWidth();
+        IQueryable<TyreServiceModel> GetAllTyresByWidth();
 
-        IQueryable<Tyre> GetAllTyresByRatio();
+        IQueryable<TyreServiceModel> GetAllTyresByRatio();
 
-        IQueryable<Tyre> GetAllTyresByDiameter();
+        IQueryable<TyreServiceModel> GetAllTyresByDiameter();
 
-        IQueryable<Tyre> GetAllAvailableTyres();
+        IQueryable<TyreServiceModel> GetAllAvailableTyres();
 
-        IQueryable<Tyre> GetAllUnavailableTyres();
-
-
-
+        IQueryable<TyreServiceModel> GetAllUnavailableTyres();
     }
 }

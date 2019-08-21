@@ -1,6 +1,7 @@
 ﻿using SNT.Data;
 using SNT.Models;
 using SNT.ServiceModels;
+using SNT.Services.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,64 +28,65 @@ namespace SNT.Services
             return result > 0;
         }
 
-        public Task<Tyre> EditTyre(Tyre tyre)
+        public Task<TyreServiceModel> EditTyre(Tyre tyre)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tyre> GetAllAvailableTyres()
+        public IQueryable<TyreServiceModel> GetAllAvailableTyres()
+        {
+            return this.context.Tyres.Where(x => x.Status == Models.Enums.AvailabilityStatus.InStock).
+                To<TyreServiceModel>();
+        }
+
+        public IQueryable<TyreServiceModel> GetAllSummerTyres()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tyre> GetAllSummerTyres()
+        public IQueryable<TyreServiceModel> GetAllTyresByBrand()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tyre> GetAllTyresByBrand()
+        public IQueryable<TyreServiceModel> GetAllTyresByDiameter()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tyre> GetAllTyresByDiameter()
+        public IQueryable<TyreServiceModel> GetAllTyresByPriceAscending()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tyre> GetAllTyresByPriceAscending()
+        public IQueryable<TyreServiceModel> GetAllTyresByPriceDescending()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tyre> GetAllTyresByPriceDescending()
+        public IQueryable<TyreServiceModel> GetAllTyresByRatio()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tyre> GetAllTyresByRatio()
+        public IQueryable<TyreServiceModel> GetAllTyresByWidth()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tyre> GetAllTyresByWidth()
+        public IQueryable<TyreServiceModel> GetAllUnavailableTyres()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Tyre> GetAllUnavailableTyres()
+        public IQueryable<TyreServiceModel> GetAllWinterTyres()
         {
             throw new NotImplementedException();
         }
-
-        public IQueryable<Tyre> GetAllWinterTyres()
+                
+        public TyreServiceModel GetTyreById(string id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Tyre> GetTyreById(string id)
-        {
-            throw new NotImplementedException();
+            return this.context.Tyres.To<TyreServiceModel>().SingleOrDefault(x => x.Id == id);
         }
     }
 }
