@@ -1,0 +1,42 @@
+﻿@model List<SNT.ViewModels.Home.TyreHomeViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Tyres";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Tyres</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div id="products" class="mt-3">
+    @for (int i = 0; i < Model.Count; i += 5)
+    {
+        <div class="products-row row d-flex justify-content-around my-5">
+            @for (int j = i; j < i + 5; j++)
+            {
+                if (j < Model.Count)
+                {
+                    <div class="product col-md-2">
+                        <div class="image-holder d-flex justify-content-center">
+                            <a href="/Product/Details/@Model[j].Id">
+                                <img class="img-thumbnail product-image" src="@Model[j].Picture" alt="...">
+                            </a>
+                        </div>
+                        <h5 class="text-primary text-center mt-3">@Model[j].Model</h5>
+                        <h5 class="text-primary text-center mt-3">@Model[j].Brand</h5>
+                        <h5 class="text-primary text-center mt-3">Price: $@Model[j].Price.ToString("F2")</h5>
+                    </div>
+                }
+                else
+                {
+                    <div class="product col-md-2 empty">
+                    </div>
+                }
+            }
+        </div>
+    }
+</div>

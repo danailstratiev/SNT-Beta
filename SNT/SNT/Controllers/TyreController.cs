@@ -27,7 +27,8 @@ namespace SNT.Controllers
         public IActionResult Review(string id)
         {
             TyreReviewViewModel tyreReviewViewModel = this.tyreService.GetTyreById(id).To<TyreReviewViewModel>();
-            return View();
+
+            return View(tyreReviewViewModel);
         }
 
 

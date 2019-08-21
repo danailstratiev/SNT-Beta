@@ -29,7 +29,6 @@
     <Folder Include="Areas\Administration\Views\Tyre\Tyres\" />
     <Folder Include="Areas\Administration\Views\WheelRims\" />
     <Folder Include="Views\WheelRims\" />
-    <Folder Include="Views\Tyres\" />
   </ItemGroup>
 
 </Project>

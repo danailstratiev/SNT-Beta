@@ -74,9 +74,9 @@ namespace SNT.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<TyreServiceModel> GetAllUnavailableTyres()
+        public IQueryable<TyreServiceModel> GetAllTyres()
         {
-            throw new NotImplementedException();
+            return this.context.Tyres.To<TyreServiceModel>();
         }
 
         public IQueryable<TyreServiceModel> GetAllWinterTyres()

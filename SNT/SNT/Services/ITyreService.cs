@@ -33,6 +33,6 @@ namespace SNT.Services
 
         IQueryable<TyreServiceModel> GetAllAvailableTyres();
 
-        IQueryable<TyreServiceModel> GetAllUnavailableTyres();
+        IQueryable<TyreServiceModel> GetAllTyres();
     }
 }
