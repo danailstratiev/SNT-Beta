@@ -43,6 +43,8 @@ namespace SNT.InputModels
         [Required]
         public int YearOfProduction { get; set; }
 
+        public string Description { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration

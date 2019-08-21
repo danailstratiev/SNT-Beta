@@ -25,5 +25,7 @@ namespace SNT.ViewModels
 
         public int YearOfProduction { get; set; }
 
+        public string Description { get; set; }
+
     }
 }

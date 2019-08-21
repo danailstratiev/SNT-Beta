@@ -26,6 +26,7 @@
   <ItemGroup>
     <Folder Include="Areas\Administration\Data\" />
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\Tyre\Tyres\" />
     <Folder Include="Areas\Administration\Views\WheelRims\" />
     <Folder Include="Views\WheelRims\" />
     <Folder Include="Views\Tyres\" />
