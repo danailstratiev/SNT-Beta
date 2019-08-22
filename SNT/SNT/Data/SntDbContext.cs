@@ -9,8 +9,10 @@ namespace SNT.Data
     {
         public DbSet<Tyre> Tyres { get; set; }
         public DbSet<WheelRim> WheelRims { get; set; }
+        public DbSet<MotorOil> MotorOils { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<ShoppingBag> ShoppingBag { get; set; }
+
+        //public DbSet<ShoppingBag> ShoppingBag { get; set; }
         public DbSet<SntReceipt> SntReceipts { get; set; }
 
         public SntDbContext(DbContextOptions<SntDbContext> options)

@@ -79,10 +79,10 @@ namespace SNT.Areas.Identity.Pages.Account
                 {
                     UserName = Input.Username,
                     Email = Input.Email,
-                    ShoppingBag = new ShoppingBag()
+                    //ShoppingBag = new ShoppingBag()
                 };
 
-                user.ShoppingBag.UserId = user.Id;
+                //user.ShoppingBag.UserId = user.Id;
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 

@@ -1,4 +1,5 @@
 ﻿using SNT.Models;
+using SNT.ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace SNT.Services
 {
     public interface IWheelRimService
     {
+        Task<bool> Create(WheelRimServiceModel wheelRimServiceModel);
+
         Task<WheelRim> EditWheelRim(WheelRim wheelRim);
 
         Task<WheelRim> GetWheelRimById(string id);

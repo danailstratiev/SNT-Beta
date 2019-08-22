@@ -1,0 +1,91 @@
+﻿@model SNT.InputModels.WheelRimCreateInputModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>WheelRimCreateInputModel</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-controller="Tyre" method="POST" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group mx-auto w-45">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="Picture" class="text-primary h5">Picture</label>
+                </div>
+                <input type="file"
+                       class="form-control text-primary text-center"
+                       id="picture"
+                       placeholder="Picture..."
+                       asp-for="Picture">
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCD" class="control-label"></label>
+                <input asp-for="PCD" class="form-control" />
+                <span asp-validation-for="PCD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CentralLukeDiameter" class="control-label"></label>
+                <input asp-for="CentralLukeDiameter" class="form-control" />
+                <span asp-validation-for="CentralLukeDiameter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Offset" class="control-label"></label>
+                <input asp-for="Offset" class="form-control" />
+                <span asp-validation-for="Offset" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Material" class="control-label"></label>
+                <input asp-for="Material" class="form-control" />
+                <span asp-validation-for="Material" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfProduction" class="control-label"></label>
+                <input asp-for="YearOfProduction" class="form-control" />
+                <span asp-validation-for="YearOfProduction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

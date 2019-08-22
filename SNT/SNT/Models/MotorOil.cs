@@ -9,6 +9,8 @@ namespace SNT.Models
 {
     public class MotorOil : IProduct
     {
+        public string Id { get; set; }
+
         public string Model { get; set; }
 
         public string Brand { get; set; }

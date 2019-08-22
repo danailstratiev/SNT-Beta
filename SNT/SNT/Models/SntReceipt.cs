@@ -17,8 +17,8 @@ namespace SNT.Models
 
         public SntUser User { get; set; }
 
-        public string ShoppingBagId { get; set; }
+        //public string ShoppingBagId { get; set; }
 
-        public ShoppingBag ShoppingBag { get; set; }
+        //public ShoppingBag ShoppingBag { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using SNT.Models.Enums;
 using SNT.ServiceModels;
 using SNT.Services.Mapping;
@@ -25,7 +26,7 @@ namespace SNT.InputModels
         public decimal Price { get; set; }
 
         [Required]
-        public string Picture { get; set; }
+        public IFormFile Picture { get; set; }
 
         [Required]
         public string PCD { get; set; }
