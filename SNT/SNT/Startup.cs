@@ -87,6 +87,11 @@ namespace SNT
                typeof(TyreViewModel).GetTypeInfo().Assembly,
                typeof(TyreServiceModel).GetTypeInfo().Assembly);
 
+            AutoMapperConfig.RegisterMappings(
+               typeof(WheelRimCreateInputModel).GetTypeInfo().Assembly,
+               typeof(WheelRimViewModel).GetTypeInfo().Assembly,
+               typeof(WheelRimServiceModel).GetTypeInfo().Assembly);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

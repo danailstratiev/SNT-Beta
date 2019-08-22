@@ -1,4 +1,6 @@
-﻿using SNT.Models.Enums;
+﻿using SNT.Models;
+using SNT.Models.Enums;
+using SNT.Services.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SNT.ServiceModels
 {
-    public class WheelRimServiceModel
+    public class WheelRimServiceModel : IMapFrom<WheelRim>, IMapTo<WheelRim>
     {
         public string Id { get; set; }
 
