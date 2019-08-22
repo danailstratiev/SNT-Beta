@@ -28,9 +28,14 @@ namespace SNT.Services
             return result > 0;
         }
 
-        public WheelRimServiceModel GetTyreById(string id)
+        public WheelRimServiceModel GetWheelRimById(string id)
         {
             return this.context.WheelRims.To<WheelRimServiceModel>().SingleOrDefault(x => x.Id == id);
+        }
+
+        public IQueryable<WheelRimServiceModel> GetAllWheelRims()
+        {
+            return this.context.WheelRims.To<WheelRimServiceModel>();
         }
 
         public Task<WheelRim> EditWheelRim(WheelRim wheelRim)
@@ -43,7 +48,7 @@ namespace SNT.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<WheelRim> GetAllUnavailableWheelRims()
+        public IQueryable<WheelRim> GetAllWheelRims()
         {
             throw new NotImplementedException();
         }
@@ -79,11 +84,6 @@ namespace SNT.Services
         }
 
         public IQueryable<WheelRim> GetAllWheelRimsByPriceDescending()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<WheelRim> GetWheelRimById(string id)
         {
             throw new NotImplementedException();
         }

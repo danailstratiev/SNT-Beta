@@ -14,10 +14,12 @@ namespace SNT.Controllers
     public class HomeController : Controller
     {
         private ITyreService tyreService;
+        private IWheelRimService wheelRimService;
 
-        public HomeController(ITyreService tyreService)
+        public HomeController(ITyreService tyreService, IWheelRimService wheelRimService)
         {
             this.tyreService = tyreService;
+            this.wheelRimService = wheelRimService;
         }
 
         public IActionResult Index()
@@ -63,6 +65,30 @@ namespace SNT.Controllers
                 .ToListAsync();
 
             return View(tyres);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> WheelRims()
+        {
+            List<WheelRimHomeViewModel> wheelRims = await this.wheelRimService.GetAllWheelRims().
+                Select(wheelRim => new WheelRimHomeViewModel
+                {
+                    Id = wheelRim.Id,
+                    Model = wheelRim.Model,
+                    Brand = wheelRim.Brand,
+                    CentralLukeDiameter = wheelRim.CentralLukeDiameter,
+                    PCD = wheelRim.PCD,
+                    Offset = wheelRim.Offset,
+                    Status = wheelRim.Status,
+                    Picture = wheelRim.Picture,
+                    Price = wheelRim.Price,
+                    Material = wheelRim.Material,
+                    YearOfProduction = wheelRim.YearOfProduction,
+                    Description = wheelRim.Description
+                })
+                .ToListAsync();
+
+            return View(wheelRims);
         }
     }
 }
