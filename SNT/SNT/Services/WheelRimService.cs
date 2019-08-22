@@ -48,7 +48,7 @@ namespace SNT.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<WheelRim> GetAllWheelRims()
+        public IQueryable<WheelRim> GetAllUnavailableWheelRims()
         {
             throw new NotImplementedException();
         }
