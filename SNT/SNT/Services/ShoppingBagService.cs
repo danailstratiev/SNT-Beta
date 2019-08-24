@@ -16,7 +16,7 @@ namespace SNT.Services
             this.context = context;
         }
 
-        public async Task<bool> AddTyreToShoppingBag(string tyreId, string userId)
+        public async Task<bool> AddTyreToShoppingBag(string tyreId, string userId, int quantity)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 

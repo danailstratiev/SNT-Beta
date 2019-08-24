@@ -78,38 +78,65 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.YearOfProduction)
         </dd>
-        
         <dd class="col-sm-10">
-            <a asp-action="AddToBag">AddToBag</a>
-            <input type="submit" value="AddToBag" class="btn btn-primary" />
+
         </dd>
     </dl>
 </div>
 
-<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+<button class="btn btn-primary text-white font-weight-bold" data-toggle="modal" data-target="#addToBagModal">AddToBag</button>
+<div class="modal fade" id="addToBagModal" tabindex="-1" role="dialog" aria-labelledby="addToBagModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="orderModalLabel">AddToBag - @Model.Model</h5>
+                <h5 class="modal-title" id="addToBagModalLabel">AddToBag - @Model.Id</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="order-form" action="/Product/Order" method="post">
+                <form id="addtobag-form" action="Tyre/AddToBag" method="post">
                     <div class="form-group">
-                        <label for="quantity" class="col-form-label font-weight-bold">Quantity</label>
-                        <input type="number"
-                               class="form-control"
-                               id="quantity"
-                               name="quantity">
-                        <input type="hidden" value="@Model.Id" name="productId" />
+                        <label for="quantity" class="col-form-label font-weight-bold">Quantity:</label>
+                        <input type="number" class="form-control" id="quantity">
+                        <input type="hidden" value="@Model.Id" name="tyreId" />
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="complete-order-button">Complete</button>
+                <button type="button" class="btn btn-primary" id="addtobag-button">Complete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" ">Open modal for</button>
+<
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
             </div>
         </div>
     </div>
@@ -120,8 +147,8 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@*<script>
-    $('#complete-order-button').click(function () {
-        $('#order-form').submit();
+<script>
+    $('#addtobag-button').click(function () {
+        $('#addtobag-form').submit();
     });
-</script>*@s
+</script>

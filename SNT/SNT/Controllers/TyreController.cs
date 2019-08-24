@@ -41,11 +41,12 @@ namespace SNT.Controllers
             return View(tyreReviewViewModel);
         }
 
-        public async Task<IActionResult> AddToBag(TyreReviewViewModel tyreReviewViewModel)
+        [HttpPost]
+        public async Task<IActionResult> AddToBag(TyreReviewViewModel tyreReviewViewModel, int quantity)
         {
             string userId = this.userManager.GetUserId(this.HttpContext.User);
 
-            await this.shoppingbagService.AddTyreToShoppingBag(tyreReviewViewModel.Id, userId);
+            await this.shoppingbagService.AddTyreToShoppingBag(tyreReviewViewModel.Id, userId, quantity);
 
             return this.Redirect("/");
         }
