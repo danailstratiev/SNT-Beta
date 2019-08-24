@@ -21,6 +21,7 @@ using SNT.InputModels;
 using System.Reflection;
 using SNT.ViewModels;
 using SNT.ServiceModels;
+using SNT.ViewModels.Home;
 
 namespace SNT
 {
@@ -94,6 +95,10 @@ namespace SNT
                typeof(WheelRimCreateInputModel).GetTypeInfo().Assembly,
                typeof(WheelRimViewModel).GetTypeInfo().Assembly,
                typeof(WheelRimServiceModel).GetTypeInfo().Assembly);
+
+            AutoMapperConfig.RegisterMappings(
+              typeof(ShoppingBag).GetTypeInfo().Assembly,
+              typeof(ShoppingBagHomeViewModel).GetTypeInfo().Assembly);
 
             if (env.IsDevelopment())
             {

@@ -9,8 +9,8 @@ namespace SNT.Models
     {
         public ShoppingBag()
         {
-            Tyres = new List<Tyre>();
-            WheelRims = new List<WheelRim>();
+            this.Tyres = new List<ShoppingBagTyre>();
+            //WheelRims = new List<WheelRim>();
         }
 
         public string Id { get; set; }
@@ -19,9 +19,9 @@ namespace SNT.Models
 
         public SntUser User { get; set; }
 
-        public List<Tyre> Tyres { get; set; }
+        public List<ShoppingBagTyre> Tyres { get; set; }
 
-        public List<WheelRim> WheelRims { get; set; }
+        //public List<WheelRim> WheelRims { get; set; }
 
     }
 }

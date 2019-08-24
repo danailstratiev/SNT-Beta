@@ -12,6 +12,7 @@ namespace SNT.Models
         {
             this.MyReceipts = new List<SntReceipt>();
             this.Orders = new List<Order>();
+            this.ShoppingBag = new ShoppingBag();
         }
 
         public ShoppingBag ShoppingBag { get; set; }

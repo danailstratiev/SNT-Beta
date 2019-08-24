@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SNT.ServiceModels
+namespace SNT.ViewModels.Home
 {
-    public class ShoppingBagServiceModel : IMapFrom<ShoppingBag>, IMapTo<ShoppingBag>
+    public class ShoppingBagHomeViewModel : IMapFrom<ShoppingBag>, IMapTo<ShoppingBag>
     {
         public string Id { get; set; }
 
@@ -16,7 +16,5 @@ namespace SNT.ServiceModels
         public SntUser User { get; set; }
 
         public List<ShoppingBagTyre> Tyres { get; set; }
-
-        //public List<WheelRim> WheelRims { get; set; }
     }
 }
