@@ -74,7 +74,9 @@ namespace SNT
 
             services.AddTransient<ITyreService, TyreService>();
             services.AddTransient<IWheelRimService, WheelRimService>();
+            services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

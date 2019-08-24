@@ -12,10 +12,12 @@ namespace SNT.Controllers
     public class TyreController : Controller
     {
         private ITyreService tyreService;
+        private IOrderService orderService;
 
-        public TyreController(ITyreService tyreService)
+        public TyreController(ITyreService tyreService, IOrderService orderService)
         {
             this.tyreService = tyreService;
+            this.orderService = orderService;
         }
 
         public IActionResult Index()
@@ -31,6 +33,12 @@ namespace SNT.Controllers
             return View(tyreReviewViewModel);
         }
 
+        public async Task<IActionResult> Order()
+        {
+
+
+            return this.Redirect("/");
+        }
 
     }
 }
