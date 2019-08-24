@@ -2,15 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SNT.Data;
+using SNT.Models;
+using SNT.Services;
 
 namespace SNT.Controllers
 {
     public class ShoppingBagController : Controller
     {
+        private readonly UserManager<SntUser> userManager;
+        private IShoppingBagService shoppingbagService;
+        private SntDbContext context;
+
+        public ShoppingBagController(UserManager<SntUser> userManager, IShoppingBagService shoppingbagService,
+            SntDbContext context)
+        {
+            this.userManager = userManager;
+            this.shoppingbagService = shoppingbagService;
+            this.context = context;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            string userId = this.userManager.GetUserId(this.HttpContext.User);
+            var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+
+            return View(user);
         }
     }
 }

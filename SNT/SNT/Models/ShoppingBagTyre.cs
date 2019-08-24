@@ -7,7 +7,8 @@ namespace SNT.Models
 {
     public class ShoppingBagTyre
     {
-        public string Id { get; set; }
+        
+        public string ShoppingBagId { get; set; }
 
         public string TyreId { get; set; }
 

@@ -27,23 +27,25 @@ namespace SNT.Services
 
             var shoppingBagTyre = new ShoppingBagTyre
             {
+                ShoppingBagId = user.ShoppingBag.Id,
                 TyreId = tyreId,
                 Tyre = this.context.Tyres.FirstOrDefault(x => x.Id == tyreId),
-                Quantity = 1,
+                Quantity = quantity,
             };
 
-            if (!user.ShoppingBag.Tyres.Any())
+            var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.ShoppingBagId == user.ShoppingBag.Id && x.TyreId == shoppingBagTyre.TyreId);
+            
+            if (currentTyre == null)
             {
-                user.ShoppingBag.Tyres.Add(shoppingBagTyre);
+                context.ShoppingBagTyres.Add(shoppingBagTyre);
             }
             else
             {
-                var currentTyre = user.ShoppingBag.Tyres.FirstOrDefault(x => x.Id == shoppingBagTyre.Id);
-
-                currentTyre.Quantity += 1;
+                currentTyre.Quantity += shoppingBagTyre.Quantity;
             }
 
-
+            await this.context.SaveChangesAsync();
+            
             return true;
         }
     }

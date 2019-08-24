@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SNT.Controllers;
 using SNT.Models;
 using SNT.Services;
 using SNT.Services.Mapping;
@@ -11,7 +12,14 @@ using SNT.ViewModels;
 
 namespace SNT.Controllers
 {
-    public class TyreController : Controller
+    public class TyreBagInputModel : IMapFrom<TyreReviewViewModel>
+    {
+        public string TyreId { get; set; }
+
+        public int Quantity { get; set; }
+    }
+}
+public class TyreController : Controller
     {
         private ITyreService tyreService;
         private IShoppingBagService shoppingbagService;
@@ -41,15 +49,14 @@ namespace SNT.Controllers
             return View(tyreReviewViewModel);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddToBag(TyreReviewViewModel tyreReviewViewModel, int quantity)
+        [HttpPost(Name = "AddToBag")]
+        public async Task<IActionResult> AddToBag(TyreBagInputModel tyreBagInputModel)
         {
             string userId = this.userManager.GetUserId(this.HttpContext.User);
 
-            await this.shoppingbagService.AddTyreToShoppingBag(tyreReviewViewModel.Id, userId, quantity);
+            await this.shoppingbagService.AddTyreToShoppingBag(tyreBagInputModel.TyreId, userId, tyreBagInputModel.Quantity);
 
             return this.Redirect("/");
         }
-
+       //}
     }
-}
