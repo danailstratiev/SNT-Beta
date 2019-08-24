@@ -96,10 +96,7 @@ namespace SNT
                typeof(WheelRimViewModel).GetTypeInfo().Assembly,
                typeof(WheelRimServiceModel).GetTypeInfo().Assembly);
 
-            AutoMapperConfig.RegisterMappings(
-              typeof(ShoppingBag).GetTypeInfo().Assembly,
-              typeof(ShoppingBagHomeViewModel).GetTypeInfo().Assembly);
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

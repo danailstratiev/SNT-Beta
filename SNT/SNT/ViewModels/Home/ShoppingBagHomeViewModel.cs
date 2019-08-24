@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace SNT.ViewModels.Home
 {
-    public class ShoppingBagHomeViewModel : IMapFrom<ShoppingBag>, IMapTo<ShoppingBag>
+    public class ShoppingBagHomeViewModel
     {
-        public string Id { get; set; }
-
-        public string UserId { get; set; }
-
-        public SntUser User { get; set; }
+        public ShoppingBagHomeViewModel(List<ShoppingBagTyre> tyres)
+        {
+            this.Tyres = tyres;
+        }
 
         public List<ShoppingBagTyre> Tyres { get; set; }
     }

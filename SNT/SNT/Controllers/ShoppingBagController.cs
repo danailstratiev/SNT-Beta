@@ -27,9 +27,9 @@ namespace SNT.Controllers
         public IActionResult Index()
         {
             string userId = this.userManager.GetUserId(this.HttpContext.User);
-            var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
-            return View(user);
+            var shoppingBagHomeViewModel = this.shoppingbagService.GetAllCartProducts(userId);
+            return View(shoppingBagHomeViewModel);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using SNT.Data;
 using SNT.Models;
+using SNT.ViewModels.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,5 +49,38 @@ namespace SNT.Services
             
             return true;
         }
+
+        public ShoppingBagHomeViewModel GetAllCartProducts(string userId)
+        {
+            var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+                       
+            List<ShoppingBagTyre> bagTyres = this.context.ShoppingBagTyres.Where(x => x.ShoppingBagId == user.ShoppingBag.Id).ToList();
+
+
+            return new ShoppingBagHomeViewModel(bagTyres);
+        }
+
+        //public async Task<bool> RemoveTyreFromShoppingBag(string tyreId, string userId)
+
+        public async Task<bool> RemoveAllShoppingBagProducts(string userId)
+        {
+            var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            var shoppingBagId = user.ShoppingBag.Id;
+
+            var products = this.context.ShoppingBagTyres.Where(x => x.ShoppingBagId == shoppingBagId);
+
+            this.context.ShoppingBagTyres.RemoveRange(products);
+
+            var result = await this.context.SaveChangesAsync();
+
+            return result > 0;
+        }
+
     }
 }
