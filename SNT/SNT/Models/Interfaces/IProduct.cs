@@ -14,9 +14,6 @@ namespace SNT.Models.Interfaces
 
        decimal Price { get; set; }
 
-       AvailabilityStatus Status { get; set; }
-
-        string Description { get; set; }
-
+       string Picture { get; set; }
     }
 }

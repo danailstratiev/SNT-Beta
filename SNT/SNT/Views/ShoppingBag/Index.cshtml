@@ -14,10 +14,10 @@
     <div class="col-md-4">
             @foreach(var tyre in Model.Tyres)
             {
-                <p>@tyre.Tyre.Picture</p>
-                <p>@tyre.Tyre.Model</p>
-                <p>@tyre.Tyre.Brand</p>
-                <p>@tyre.Tyre.Price</p>
+                <p><img class="img-thumbnail product-image" src="@tyre.Picture" alt="..."> </p>
+                <p>@tyre.Model</p>
+                <p>@tyre.Brand</p>
+                <p>@tyre.Price</p>
                 <p>@tyre.Quantity</p>
             }
     </div>

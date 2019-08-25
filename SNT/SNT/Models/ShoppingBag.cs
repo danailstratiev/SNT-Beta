@@ -19,7 +19,7 @@ namespace SNT.Models
 
         public SntUser User { get; set; }
 
-        public List<ShoppingBagTyre> Tyres { get; set; }
+        public virtual List<ShoppingBagTyre> Tyres { get; set; }
 
         //public List<WheelRim> WheelRims { get; set; }
 

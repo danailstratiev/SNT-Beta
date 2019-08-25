@@ -8,7 +8,7 @@ namespace SNT.Services
 {
     public interface IShoppingBagService
     {
-        Task<bool> AddTyreToShoppingBag(string tyreId, string userId, int quantity);
+        Task<bool> AddTyreToShoppingBag(string tyreId, string userId);
 
         ShoppingBagHomeViewModel GetAllCartProducts(string userId);
 

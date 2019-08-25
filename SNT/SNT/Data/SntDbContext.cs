@@ -24,6 +24,12 @@ namespace SNT.Data
         {
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=SntDB;Trusted_Connection=true");
         }
-       
+
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    builder.Entity<ShoppingBagTyre>().HasKey(x => new { x.UserId, x.TyreId });
+
+
+        //}
     }
 }

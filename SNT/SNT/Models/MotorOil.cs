@@ -15,7 +15,7 @@ namespace SNT.Models
 
         public string Brand { get; set; }
 
-        public decimal Price { get; set; }      
+        public decimal Price { get; set; }
 
         public string Viscosity { get; set; }
 
@@ -26,5 +26,6 @@ namespace SNT.Models
         public AvailabilityStatus Status { get; set; }
 
         public string Description { get; set; }
+        public string Picture { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace SNT.Controllers
     {
         public string TyreId { get; set; }
 
-        public int Quantity { get; set; }
     }
 }
 public class TyreController : Controller
@@ -54,7 +53,7 @@ public class TyreController : Controller
         {
             string userId = this.userManager.GetUserId(this.HttpContext.User);
 
-            await this.shoppingbagService.AddTyreToShoppingBag(tyreBagInputModel.TyreId, userId, tyreBagInputModel.Quantity);
+            await this.shoppingbagService.AddTyreToShoppingBag(tyreBagInputModel.TyreId, userId);
 
             return this.Redirect("/");
         }

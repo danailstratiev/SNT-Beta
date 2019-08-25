@@ -17,40 +17,39 @@ namespace SNT.Services
             this.context = context;
         }
 
-        public async Task<bool> AddTyreToShoppingBag(string tyreId, string userId, int quantity)
+        public async Task<bool> AddTyreToShoppingBag(string tyreId, string userId)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
-            bool validQuantity = quantity > 0 ;
 
-            if (user == null || tyreId == null || validQuantity == false)
+            if (user == null || tyreId == null)
             {
                 return false;
             }
 
-            var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.ShoppingBagId == user.ShoppingBag.Id && x.TyreId == tyreId);
+            var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.UserId == user.Id && x.TyreId == tyreId);
 
             if (currentTyre != null)
             {
-                context.ShoppingBagTyres.FirstOrDefault(x => x.ShoppingBagId == user.ShoppingBag.Id && x.TyreId == tyreId)
-                    .Quantity += quantity;
-
-                var result = await this.context.SaveChangesAsync();
-
-                return result > 0;
+                return true;
             }
 
             var tyre = this.context.Tyres.SingleOrDefault(x => x.Id == tyreId);
 
             var shoppingBagTyre = new ShoppingBagTyre
             {
-                ShoppingBagId = user.ShoppingBag.Id,
+                UserId = user.Id,
                 TyreId = tyreId,
-                Tyre = tyre,
-                Quantity = quantity,
+                Model = tyre.Model,
+                Brand = tyre.Brand,
+                Price = tyre.Price,
+                Picture = tyre.Picture,
+                Quantity = 1,
             };
 
+            this.context.ShoppingBagTyres.Add(shoppingBagTyre);
+
             await this.context.SaveChangesAsync();
-            
+
             return true;
         }
 
@@ -58,9 +57,9 @@ namespace SNT.Services
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
-            List<ShoppingBagTyre> bagTyres = new List<ShoppingBagTyre>();
+            HashSet<ShoppingBagTyre> bagTyres = new HashSet<ShoppingBagTyre>();
 
-            foreach (var tyre in this.context.ShoppingBagTyres.Where(x => x.ShoppingBagId == user.ShoppingBag.Id))
+            foreach (var tyre in this.context.ShoppingBagTyres.Where(x => x.UserId == user.Id))
             {
                 bagTyres.Add(tyre);
             }
@@ -79,9 +78,7 @@ namespace SNT.Services
                 return false;
             }
 
-            var shoppingBagId = user.ShoppingBag.Id;
-
-            var products = this.context.ShoppingBagTyres.Where(x => x.ShoppingBagId == shoppingBagId);
+            var products = this.context.ShoppingBagTyres.Where(x => x.UserId == userId);
 
             this.context.ShoppingBagTyres.RemoveRange(products);
 

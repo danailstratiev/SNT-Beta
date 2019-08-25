@@ -10,8 +10,8 @@ namespace SNT.ServiceModels
 {
     public class SntUserServiceModel : IdentityUser, IMapFrom<SntUser>
     {
-        ShoppingBagServiceModel ShoppingBag;
+        //ShoppingBagServiceModel ShoppingBag;
 
-        List<OrderServiceModel> Orders;
+        //List<OrderServiceModel> Orders;
     }
 }
