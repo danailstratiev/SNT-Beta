@@ -100,7 +100,14 @@ namespace SNT.Services
                 bagTyres.Add(tyre);
             }
 
-            return new ShoppingBagHomeViewModel(bagTyres);
+            HashSet<ShoppingBagWheelRim> bagWheelRims = new HashSet<ShoppingBagWheelRim>();
+
+            foreach (var wheelRim in this.context.ShoppingBagWheelRims.Where(x => x.UserId == user.Id))
+            {
+                bagWheelRims.Add(wheelRim);
+            }
+
+            return new ShoppingBagHomeViewModel(bagTyres, bagWheelRims);
         }
 
         //public async Task<bool> RemoveTyreFromShoppingBag(string tyreId, string userId)

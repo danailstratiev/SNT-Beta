@@ -20,6 +20,16 @@
                 <p>@tyre.Price</p>
                 <p>@tyre.Quantity</p>
             }
+    </div> 
+    <div class="col-md-4">
+            @foreach(var wheelRim in Model.WheelRims)
+            {
+                <p><img class="img-thumbnail product-image" src="@wheelRim.Picture" alt="..."> </p>
+                <p>@wheelRim.Model</p>
+                <p>@wheelRim.Brand</p>
+                <p>@wheelRim.Price</p>
+                <p>@wheelRim.Quantity</p>
+            }
     </div>
 </div>
 

@@ -23,9 +23,12 @@ namespace SNT.Controllers
         private IShoppingBagService shoppingbagService;
         private readonly UserManager<SntUser> userManager;
 
-        public WheelRimController(IWheelRimService wheelRimService)
+        public WheelRimController(IWheelRimService wheelRimService, IShoppingBagService shoppingbagService,
+            UserManager<SntUser> userManager)
         {
             this.wheelRimService = wheelRimService;
+            this.shoppingbagService = shoppingbagService;
+            this.userManager = userManager;
         }
 
         public IActionResult Index()
@@ -46,7 +49,7 @@ namespace SNT.Controllers
         {
             string userId = this.userManager.GetUserId(this.HttpContext.User);
 
-            await this.shoppingbagService.AddTyreToShoppingBag(wheelRimBagInputModel.WheelRimId, userId);
+            await this.shoppingbagService.AddWheelRimToShoppingBag(wheelRimBagInputModel.WheelRimId, userId);
 
             return this.Redirect("/");
         }
