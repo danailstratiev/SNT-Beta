@@ -107,7 +107,7 @@ namespace SNT.Services
                 bagWheelRims.Add(wheelRim);
             }
 
-            return new ShoppingBagHomeViewModel(bagTyres, bagWheelRims);
+            return new ShoppingBagHomeViewModel(bagTyres, bagWheelRims, user.Id);
         }
 
         //public async Task<bool> RemoveTyreFromShoppingBag(string tyreId, string userId)

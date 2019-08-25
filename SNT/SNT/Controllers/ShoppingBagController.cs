@@ -31,5 +31,11 @@ namespace SNT.Controllers
             var shoppingBagHomeViewModel = this.shoppingbagService.GetAllCartProducts(userId);
             return View(shoppingBagHomeViewModel);
         }
+
+        public IActionResult EditShoppingBagQuantity(string id)
+        {
+            return View();
+        }
+
     }
 }

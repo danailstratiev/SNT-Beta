@@ -10,12 +10,16 @@ namespace SNT.ViewModels.Home
     public class ShoppingBagHomeViewModel
     {
         public ShoppingBagHomeViewModel(HashSet<ShoppingBagTyre> tyres, 
-            HashSet<ShoppingBagWheelRim> wheelRims)
+            HashSet<ShoppingBagWheelRim> wheelRims, string userId)
         {
             this.Tyres = tyres;
 
             this.WheelRims = wheelRims;
+
+            this.UserId = userId;
         }
+
+        public string UserId { get; set; }
 
         public HashSet<ShoppingBagTyre> Tyres { get; set; }
         public HashSet<ShoppingBagWheelRim> WheelRims { get; set; }
