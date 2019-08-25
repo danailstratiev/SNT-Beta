@@ -10,6 +10,8 @@ namespace SNT.Services
     {
         Task<bool> AddTyreToShoppingBag(string tyreId, string userId);
 
+        Task<bool> AddWheelRimToShoppingBag(string wheelRimId, string userId);
+
         ShoppingBagHomeViewModel GetAllCartProducts(string userId);
 
         Task<bool> RemoveAllShoppingBagProducts(string userId);

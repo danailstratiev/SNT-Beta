@@ -6,13 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 using SNT.InputModels;
 using SNT.ServiceModels;
 using SNT.Services;
+using SNT.Services.Mapping;
+using SNT.ViewModels.Review;
 
 namespace SNT.Areas.Administration.Controllers
 {
+    
+
     public class WheelRimController : AdminController
     {
         private IWheelRimService wheelRimService;
         private readonly ICloudinaryService cloudinaryService;
+       
 
         public WheelRimController(IWheelRimService wheelRimService, ICloudinaryService cloudinaryService)
         {
@@ -46,5 +51,7 @@ namespace SNT.Areas.Administration.Controllers
 
             return this.Redirect("/");
         }
+
+        
     }
 }

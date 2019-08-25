@@ -53,6 +53,11 @@ namespace SNT.Services
             return true;
         }
 
+        public Task<bool> AddWheelRimToShoppingBag(string wheelRimId, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public ShoppingBagHomeViewModel GetAllCartProducts(string userId)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);

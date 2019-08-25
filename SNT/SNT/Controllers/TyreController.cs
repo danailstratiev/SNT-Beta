@@ -22,8 +22,8 @@ public class TyreController : Controller
     {
         private ITyreService tyreService;
         private IShoppingBagService shoppingbagService;
-        private IOrderService orderService;
         private readonly UserManager<SntUser> userManager;
+        private IOrderService orderService;
 
 
         public TyreController(ITyreService tyreService, IOrderService orderService,
