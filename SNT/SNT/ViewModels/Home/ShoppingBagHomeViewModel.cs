@@ -15,5 +15,6 @@ namespace SNT.ViewModels.Home
         }
 
         public HashSet<ShoppingBagTyre> Tyres { get; set; }
+        public HashSet<ShoppingBagWheelRim> WheelRims { get; set; }
     }
 }

@@ -53,9 +53,40 @@ namespace SNT.Services
             return true;
         }
 
-        public Task<bool> AddWheelRimToShoppingBag(string wheelRimId, string userId)
+        public async Task<bool> AddWheelRimToShoppingBag(string wheelRimId, string userId)
         {
-            throw new NotImplementedException();
+            var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+
+            if (user == null || wheelRimId == null)
+            {
+                return false;
+            }
+
+            var currentTyre = context.ShoppingBagWheelRims.FirstOrDefault(x => x.UserId == user.Id && x.WheelRimId == wheelRimId);
+
+            if (currentTyre != null)
+            {
+                return true;
+            }
+
+            var wheelRim = this.context.WheelRims.SingleOrDefault(x => x.Id == wheelRimId);
+
+            var shoppingBagWheelRim = new ShoppingBagWheelRim
+            {
+                UserId = user.Id,
+                WheelRimId = wheelRimId,
+                Model = wheelRim.Model,
+                Brand = wheelRim.Brand,
+                Price = wheelRim.Price,
+                Picture = wheelRim.Picture,
+                Quantity = 1,
+            };
+
+            this.context.ShoppingBagWheelRims.Add(shoppingBagWheelRim);
+
+            await this.context.SaveChangesAsync();
+
+            return true;
         }
 
         public ShoppingBagHomeViewModel GetAllCartProducts(string userId)
