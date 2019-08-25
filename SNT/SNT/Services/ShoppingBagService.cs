@@ -20,30 +20,34 @@ namespace SNT.Services
         public async Task<bool> AddTyreToShoppingBag(string tyreId, string userId, int quantity)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+            bool validQuantity = quantity > 0 ;
 
-            if (user == null)
+            if (user == null || tyreId == null || validQuantity == false)
             {
                 return false;
             }
+
+            var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.ShoppingBagId == user.ShoppingBag.Id && x.TyreId == tyreId);
+
+            if (currentTyre != null)
+            {
+                context.ShoppingBagTyres.FirstOrDefault(x => x.ShoppingBagId == user.ShoppingBag.Id && x.TyreId == tyreId)
+                    .Quantity += quantity;
+
+                var result = await this.context.SaveChangesAsync();
+
+                return result > 0;
+            }
+
+            var tyre = this.context.Tyres.SingleOrDefault(x => x.Id == tyreId);
 
             var shoppingBagTyre = new ShoppingBagTyre
             {
                 ShoppingBagId = user.ShoppingBag.Id,
                 TyreId = tyreId,
-                Tyre = this.context.Tyres.FirstOrDefault(x => x.Id == tyreId),
+                Tyre = tyre,
                 Quantity = quantity,
             };
-
-            var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.ShoppingBagId == user.ShoppingBag.Id && x.TyreId == shoppingBagTyre.TyreId);
-            
-            if (currentTyre == null)
-            {
-                context.ShoppingBagTyres.Add(shoppingBagTyre);
-            }
-            else
-            {
-                currentTyre.Quantity += shoppingBagTyre.Quantity;
-            }
 
             await this.context.SaveChangesAsync();
             
@@ -53,9 +57,13 @@ namespace SNT.Services
         public ShoppingBagHomeViewModel GetAllCartProducts(string userId)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
-                       
-            List<ShoppingBagTyre> bagTyres = this.context.ShoppingBagTyres.Where(x => x.ShoppingBagId == user.ShoppingBag.Id).ToList();
 
+            List<ShoppingBagTyre> bagTyres = new List<ShoppingBagTyre>();
+
+            foreach (var tyre in this.context.ShoppingBagTyres.Where(x => x.ShoppingBagId == user.ShoppingBag.Id))
+            {
+                bagTyres.Add(tyre);
+            }
 
             return new ShoppingBagHomeViewModel(bagTyres);
         }

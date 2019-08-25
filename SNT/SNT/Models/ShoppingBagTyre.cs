@@ -7,6 +7,11 @@ namespace SNT.Models
 {
     public class ShoppingBagTyre
     {
+        public ShoppingBagTyre()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         public string Id { get; set; }
 
         public string ShoppingBagId { get; set; }

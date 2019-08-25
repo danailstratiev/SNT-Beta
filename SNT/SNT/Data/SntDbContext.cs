@@ -24,5 +24,6 @@ namespace SNT.Data
         {
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=SntDB;Trusted_Connection=true");
         }
+       
     }
 }
