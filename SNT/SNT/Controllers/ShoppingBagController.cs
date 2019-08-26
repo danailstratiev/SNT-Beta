@@ -29,6 +29,10 @@ namespace SNT.Controllers
             string userId = this.userManager.GetUserId(this.HttpContext.User);
 
             var shoppingBagHomeViewModel = this.shoppingbagService.GetAllCartProducts(userId);
+
+            //ToDo Refactor this
+            //TyreServiceModel tyreServiceModel = AutoMapper.Mapper.Map<TyreServiceModel>(tyreCreateInputModel);
+            
             return View(shoppingBagHomeViewModel);
         }
 

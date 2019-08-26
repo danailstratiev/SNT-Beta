@@ -7,7 +7,14 @@ namespace SNT.Models
 {
     public class OrderWheelRim
     {
+        public OrderWheelRim()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         public string Id { get; set; }
+
+        public string OrderId { get; set; }
 
         public string UserId { get; set; }
 

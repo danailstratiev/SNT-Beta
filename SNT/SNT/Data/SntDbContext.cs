@@ -15,6 +15,8 @@ namespace SNT.Data
         public DbSet<SntReceipt> SntReceipts { get; set; }
         public DbSet<ShoppingBagTyre> ShoppingBagTyres { get; set; }
         public DbSet<ShoppingBagWheelRim> ShoppingBagWheelRims { get; set; }
+        public DbSet<OrderTyre> OrderTyres { get; set; }
+        public DbSet<OrderWheelRim> OrderWheelRims { get; set; }
 
         public SntDbContext(DbContextOptions<SntDbContext> options)
             : base(options)

@@ -16,16 +16,18 @@ namespace SNT.ServiceModels
 
         public DateTime DeliveryDate => DateOfCreation.AddDays(7);
 
-        public DeliveryDestination DeliveryDestination { get; set; }
+        public string DeliveryAddress { get; set; }
 
         public string ClientId { get; set; }
 
-        public SntUserServiceModel Client { get; set; }
+        public SntUser Client { get; set; }
 
-        public List<TyreServiceModel> Tyres { get; set; }
+        public HashSet<OrderTyre> Tyres { get; set; }
 
-        public List<WheelRimServiceModel> WheelRims { get; set; }
+        public HashSet<OrderWheelRim> WheelRims { get; set; }
 
         public OrderStage OrderStage { get; set; }
+
+        public string Comment { get; set; }
     }
 }

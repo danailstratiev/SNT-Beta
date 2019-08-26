@@ -8,6 +8,6 @@ namespace SNT.Services
 {
     public interface IOrderService
     {
-        Task<bool> Create(OrderServiceModel orderServiceModel);
+        Task<bool> Create(OrderServiceModel orderServiceModel, string userId);
     }
 }

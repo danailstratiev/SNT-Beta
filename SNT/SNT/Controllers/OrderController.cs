@@ -12,5 +12,12 @@ namespace SNT.Controllers
         {
             return View();
         }
+
+        public IActionResult Create()
+        {
+            string userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return View();
+        }
     }
 }

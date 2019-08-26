@@ -10,8 +10,9 @@ namespace SNT.Models
     {
         public Order()
         {
-            Tyres = new List<Tyre>();
-            WheelRims = new List<WheelRim>();
+            this.Id = Guid.NewGuid().ToString();
+            Tyres = new HashSet<OrderTyre>();
+            WheelRims = new HashSet<OrderWheelRim>();
         }
 
         public string Id { get; set; }
@@ -20,16 +21,18 @@ namespace SNT.Models
 
         public DateTime DeliveryDate => DateOfCreation.AddDays(7);
 
-        public DeliveryDestination DeliveryDestination { get; set; }
+        public string DeliveryAddress { get; set; }
 
         public string ClientId { get; set; }
 
         public SntUser Client { get; set; }
 
-        public List<Tyre> Tyres { get; set; }
+        public HashSet<OrderTyre> Tyres { get; set; }
 
-        public List<WheelRim> WheelRims{ get; set; }
+        public HashSet<OrderWheelRim> WheelRims{ get; set; }
 
         public OrderStage OrderStage { get; set; }
+
+        public string Comment { get; set; }
     }
 }
