@@ -13,9 +13,7 @@ namespace SNT.InputModels
     public class OrderCreateInputModel : IMapTo<OrderServiceModel>, IHaveCustomMappings
     {
         public string Id { get; set; }
-
-        public DateTime DateOfCreation { get; set; }
-        
+                
         public string ClientName { get; set; }
 
         public string DeliveryAddress { get; set; }              

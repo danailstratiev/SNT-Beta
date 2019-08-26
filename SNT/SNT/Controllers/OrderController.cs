@@ -39,7 +39,7 @@ namespace SNT.Controllers
 
             this.orderService.Create(orderServiceModel, userId);
 
-            return Redirect("/");
+            return Redirect("/Order/Confirm");
         }
     }
 }
