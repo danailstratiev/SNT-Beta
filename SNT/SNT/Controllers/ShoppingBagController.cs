@@ -37,5 +37,9 @@ namespace SNT.Controllers
             return View();
         }
 
+        public IActionResult CalculateTotalPrice(string id)
+        {
+            return View();
+        }
     }
 }

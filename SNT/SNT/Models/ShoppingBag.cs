@@ -19,6 +19,9 @@ namespace SNT.Models
 
         public SntUser User { get; set; }
 
+        //public HashSet<ShoppingBagTyre> Tyres { get; set; }
+        //public HashSet<ShoppingBagWheelRim> WheelRims { get; set; }
+
         public virtual List<ShoppingBagTyre> Tyres { get; set; }
 
         //public List<WheelRim> WheelRims { get; set; }

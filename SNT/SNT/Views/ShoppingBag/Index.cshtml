@@ -12,26 +12,27 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-            @foreach(var tyre in Model.Tyres)
-            {
-                <p><img class="img-thumbnail product-image" src="@tyre.Picture" alt="..."> </p>
-                <p>@tyre.Model</p>
-                <p>@tyre.Brand</p>
-                <p>@tyre.Price</p>
-                <p>@tyre.Quantity</p>
-            }
-    </div> 
+        @foreach (var tyre in Model.Tyres)
+        {
+            <p><img class="img-thumbnail product-image" src="@tyre.Picture" alt="..."> </p>
+            <p>@tyre.Model</p>
+            <p>@tyre.Brand</p>
+            <p>@tyre.Price</p>
+            <p>@tyre.Quantity</p>
+        }
+    </div>
     <div class="col-md-4">
-            @foreach(var wheelRim in Model.WheelRims)
-            {
-                <p><img class="img-thumbnail product-image" src="@wheelRim.Picture" alt="..."> </p>
-                <p>@wheelRim.Model</p>
-                <p>@wheelRim.Brand</p>
-                <p>@wheelRim.Price</p>
-                <p>@wheelRim.Quantity</p>
-            }
+        @foreach (var wheelRim in Model.WheelRims)
+        {
+            <p><img class="img-thumbnail product-image" src="@wheelRim.Picture" alt="..."> </p>
+            <p>@wheelRim.Model</p>
+            <p>@wheelRim.Brand</p>
+            <p>@wheelRim.Price</p>
+            <p>@wheelRim.Quantity</p>
+        }
     </div>
 </div>
+<h2 class="text-primary" id="total-price">Total: @Model.Sum().ToString("F2")</h2>
 
 <div>
     <a asp-action="Index">Back to List</a>
