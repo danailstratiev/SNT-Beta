@@ -9,8 +9,9 @@ namespace SNT.Models
     {
         public ShoppingBag()
         {
-            this.Tyres = new List<ShoppingBagTyre>();
-            //WheelRims = new List<WheelRim>();
+            this.Id = Guid.NewGuid().ToString();
+            this.Tyres = new HashSet<ShoppingBagTyre>();
+            this.WheelRims = new HashSet<ShoppingBagWheelRim>();
         }
 
         public string Id { get; set; }
@@ -19,12 +20,8 @@ namespace SNT.Models
 
         public SntUser User { get; set; }
 
-        //public HashSet<ShoppingBagTyre> Tyres { get; set; }
-        //public HashSet<ShoppingBagWheelRim> WheelRims { get; set; }
+        public HashSet<ShoppingBagTyre> Tyres { get; set; }
 
-        public virtual List<ShoppingBagTyre> Tyres { get; set; }
-
-        //public List<WheelRim> WheelRims { get; set; }
-
+        public HashSet<ShoppingBagWheelRim> WheelRims { get; set; }
     }
 }

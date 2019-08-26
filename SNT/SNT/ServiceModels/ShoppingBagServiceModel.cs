@@ -9,20 +9,13 @@ using System.Threading.Tasks;
 
 namespace SNT.ServiceModels
 {
-    public class ShoppingBagServiceModel : IMapFrom<ShoppingBagHomeViewModel>, IHaveCustomMappings
+    public class ShoppingBagServiceModel : IMapFrom<ShoppingBag>, IMapTo<ShoppingBag>
     {
         public string UserId { get; set; }
 
         public HashSet<ShoppingBagTyre> Tyres { get; set; }
 
         public HashSet<ShoppingBagWheelRim> WheelRims { get; set; }
-
-
-        public void CreateMappings(IProfileExpression configuration)
-        {
-            configuration
-               .CreateMap<ShoppingBagServiceModel, ShoppingBagHomeViewModel>();
-        }
 
     }
 }

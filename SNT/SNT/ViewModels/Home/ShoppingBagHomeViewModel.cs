@@ -1,4 +1,6 @@
-﻿using SNT.Models;
+﻿using AutoMapper;
+using SNT.Models;
+using SNT.ServiceModels;
 using SNT.Services.Mapping;
 using System;
 using System.Collections.Generic;
@@ -7,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace SNT.ViewModels.Home
 {
-    public class ShoppingBagHomeViewModel
+    public class ShoppingBagHomeViewModel : IMapFrom<ShoppingBagServiceModel>
     {
-        public ShoppingBagHomeViewModel(HashSet<ShoppingBagTyre> tyres, 
+        public ShoppingBagHomeViewModel(HashSet<ShoppingBagTyre> tyres,
             HashSet<ShoppingBagWheelRim> wheelRims, string userId)
         {
             this.Tyres = tyres;
@@ -42,5 +44,11 @@ namespace SNT.ViewModels.Home
 
             return sum;
         }
+
+        //public void CreateMappings(IProfileExpression configuration)
+        //{
+        //    configuration
+        //       .CreateMap<ShoppingBagServiceModel, ShoppingBagHomeViewModel>();
+        //}
     }
 }

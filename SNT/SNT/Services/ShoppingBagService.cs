@@ -21,6 +21,12 @@ namespace SNT.Services
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
+            if (user.ShoppingBag.UserId == null)
+            {
+                user.ShoppingBag.UserId = user.Id;
+                user.ShoppingBag.User = user;
+            }
+
             if (user == null || tyreId == null)
             {
                 return false;
@@ -56,6 +62,12 @@ namespace SNT.Services
         public async Task<bool> AddWheelRimToShoppingBag(string wheelRimId, string userId)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+
+            if (user.ShoppingBag.UserId == null)
+            {
+                user.ShoppingBag.UserId = user.Id;
+                user.ShoppingBag.User = user;
+            }
 
             if (user == null || wheelRimId == null)
             {
@@ -106,6 +118,11 @@ namespace SNT.Services
             {
                 bagWheelRims.Add(wheelRim);
             }
+
+            user.ShoppingBag.Tyres = bagTyres;
+            user.ShoppingBag.WheelRims = bagWheelRims;
+
+            this.context.SaveChangesAsync();
 
             return new ShoppingBagHomeViewModel(bagTyres, bagWheelRims, user.Id);
         }
