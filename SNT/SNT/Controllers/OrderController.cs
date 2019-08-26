@@ -29,6 +29,7 @@ namespace SNT.Controllers
         {
             return View();
         }
+        
 
         [HttpPost("/Order/Create")]
         public IActionResult Create(OrderCreateInputModel orderCreateInputModel)
@@ -39,7 +40,15 @@ namespace SNT.Controllers
 
             this.orderService.Create(orderServiceModel, userId);
 
-            return Redirect("/Order/Confirm");
+            return Redirect("/Order/Details");
+        }
+
+        [HttpGet("/Order/Details")]
+        public IActionResult Details()
+        {
+            string userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return View(this.orderService.GetOrder(userId));
         }
     }
 }

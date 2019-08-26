@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SNT.ViewModels.Confirm
 {
-    public class OrderConfirmViewModel : IMapFrom<TyreServiceModel>
+    public class OrderConfirmViewModel : IMapFrom<Order>
     {
         public string Id { get; set; }
 

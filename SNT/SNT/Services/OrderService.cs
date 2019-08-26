@@ -2,6 +2,7 @@
 using SNT.Models;
 using SNT.ServiceModels;
 using SNT.Services.Mapping;
+using SNT.ViewModels.Confirm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +19,29 @@ namespace SNT.Services
             this.context = context;
         }
 
-        public async Task<bool> Create(OrderServiceModel orderServiceModel,string userId)
+        public OrderConfirmViewModel Create(OrderServiceModel orderServiceModel, string userId)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
-            Order order = orderServiceModel.To<Order>();
+            Order order = new Order();
+            Order orderFromInput = orderServiceModel.To<Order>();
 
+            order.ClientName = orderFromInput.ClientName;
+            order.DeliveryAddress = orderFromInput.DeliveryAddress;
+            order.Comment = orderFromInput.Comment;
             order.ClientId = user.Id;
             order.Client = user;
             order.DateOfCreation = DateTime.UtcNow;
             order.OrderStage = Models.Enums.OrderStage.Accepted;
 
-            foreach (var tyre in user.ShoppingBag.Tyres)
+            HashSet<ShoppingBagTyre> bagTyres = new HashSet<ShoppingBagTyre>();
+
+            foreach (var tyre in this.context.ShoppingBagTyres.Where(x => x.UserId == user.Id))
+            {
+                bagTyres.Add(tyre);
+            }
+
+            foreach (var tyre in bagTyres)
             {
                 var orderTyre = new OrderTyre()
                 {
@@ -43,6 +55,7 @@ namespace SNT.Services
                 };
 
                 order.Tyres.Add(orderTyre);
+                this.context.OrderTyres.Add(orderTyre);
             }
 
             foreach (var wheelRim in user.ShoppingBag.WheelRims)
@@ -59,14 +72,53 @@ namespace SNT.Services
                 };
 
                 order.WheelRims.Add(orderWheelRim);
+                this.context.OrderWheelRims.Add(orderWheelRim);
             }
 
             user.Orders.Add(order);
 
             this.context.Orders.Add(order);
-            var result = await this.context.SaveChangesAsync();
+            this.context.SaveChanges();
 
-            return result > 0;
+            var orderConfirmViewModel = new OrderConfirmViewModel()
+            {
+                Id = order.Id,
+                ClientName = order.ClientName,
+                DeliveryAddress = order.DeliveryAddress,
+                Comment = order.Comment,
+                ClientId = order.ClientId,
+                Client = order.Client,
+                DateOfCreation = order.DateOfCreation                
+            };
+
+            orderConfirmViewModel.Tyres = order.Tyres;
+            orderConfirmViewModel.WheelRims = order.WheelRims;
+
+            return orderConfirmViewModel;
+        }
+
+        public OrderConfirmViewModel GetOrder(string userId)
+        {
+            var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+
+            var order = context.Orders.FirstOrDefault(x => x.OrderStage == Models.Enums.OrderStage.Accepted &&
+            x.ClientId == userId);
+
+            var orderConfirmViewModel = new OrderConfirmViewModel()
+            {
+                Id = order.Id,
+                ClientName = order.ClientName,
+                DeliveryAddress = order.DeliveryAddress,
+                Comment = order.Comment,
+                ClientId = order.ClientId,
+                Client = order.Client,
+                DateOfCreation = order.DateOfCreation
+            };
+
+            orderConfirmViewModel.Tyres = this.context.OrderTyres.Where(x => x.OrderId == order.Id).ToHashSet();
+            orderConfirmViewModel.WheelRims = order.WheelRims;
+
+            return orderConfirmViewModel;
         }
     }
 }

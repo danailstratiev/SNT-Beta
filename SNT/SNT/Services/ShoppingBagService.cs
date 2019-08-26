@@ -21,16 +21,19 @@ namespace SNT.Services
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
+            if (user == null || tyreId == null)
+            {
+                return false;
+            }
+
             if (user.ShoppingBag.UserId == null)
             {
                 user.ShoppingBag.UserId = user.Id;
                 user.ShoppingBag.User = user;
             }
 
-            if (user == null || tyreId == null)
-            {
-                return false;
-            }
+            this.context.ShoppingBag.Update(user.ShoppingBag);
+
 
             var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.UserId == user.Id && x.TyreId == tyreId);
 
@@ -62,6 +65,11 @@ namespace SNT.Services
         public async Task<bool> AddWheelRimToShoppingBag(string wheelRimId, string userId)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+            
+            if (user == null || wheelRimId == null)
+            {
+                return false;
+            }
 
             if (user.ShoppingBag.UserId == null)
             {
@@ -69,11 +77,8 @@ namespace SNT.Services
                 user.ShoppingBag.User = user;
             }
 
-            if (user == null || wheelRimId == null)
-            {
-                return false;
-            }
-
+            this.context.ShoppingBag.Update(user.ShoppingBag);
+            
             var currentTyre = context.ShoppingBagWheelRims.FirstOrDefault(x => x.UserId == user.Id && x.WheelRimId == wheelRimId);
 
             if (currentTyre != null)
@@ -122,6 +127,7 @@ namespace SNT.Services
             user.ShoppingBag.Tyres = bagTyres;
             user.ShoppingBag.WheelRims = bagWheelRims;
 
+            this.context.ShoppingBag.Update(user.ShoppingBag);
             this.context.SaveChangesAsync();
 
             return new ShoppingBagHomeViewModel(bagTyres, bagWheelRims, user.Id);

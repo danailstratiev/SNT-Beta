@@ -1,4 +1,5 @@
 ﻿using SNT.ServiceModels;
+using SNT.ViewModels.Confirm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,9 @@ namespace SNT.Services
 {
     public interface IOrderService
     {
-        Task<bool> Create(OrderServiceModel orderServiceModel, string userId);
+        OrderConfirmViewModel Create(OrderServiceModel orderServiceModel, string userId);
+
+        OrderConfirmViewModel GetOrder(string userId);
+
     }
 }
