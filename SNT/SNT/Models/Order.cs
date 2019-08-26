@@ -27,6 +27,8 @@ namespace SNT.Models
 
         public SntUser Client { get; set; }
 
+        public string ClientName { get; set; }
+
         public HashSet<OrderTyre> Tyres { get; set; }
 
         public HashSet<OrderWheelRim> WheelRims{ get; set; }

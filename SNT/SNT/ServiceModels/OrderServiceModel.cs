@@ -18,6 +18,8 @@ namespace SNT.ServiceModels
 
         public string DeliveryAddress { get; set; }
 
+        public string ClientName { get; set; }
+
         public string ClientId { get; set; }
 
         public SntUser Client { get; set; }

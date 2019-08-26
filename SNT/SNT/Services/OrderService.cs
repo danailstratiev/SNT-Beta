@@ -23,7 +23,11 @@ namespace SNT.Services
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
             Order order = orderServiceModel.To<Order>();
+
+            order.ClientId = user.Id;
+            order.Client = user;
             order.DateOfCreation = DateTime.UtcNow;
+            order.OrderStage = Models.Enums.OrderStage.Accepted;
 
             foreach (var tyre in user.ShoppingBag.Tyres)
             {
