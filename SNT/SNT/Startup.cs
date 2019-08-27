@@ -77,6 +77,7 @@ namespace SNT
             services.AddTransient<IWheelRimService, WheelRimService>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IShoppingBagService, ShoppingBagService>();
+            services.AddTransient<IReceiptService, ReceiptService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
 
 

@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace SNT.Services
 {
-    public class ReceiptService
+    public class ReceiptService : IReceiptService
     {
         private SntDbContext context;
-        private OrderService orderService;
+        //private OrderService orderService;
 
-        public ReceiptService(SntDbContext context, OrderService orderService)
+        public ReceiptService(SntDbContext context)
         {
             this.context = context;
-            this.orderService = orderService;
+            //this.orderService = orderService;
         }
 
         public async Task<bool> GenerateReceipt(string userId)

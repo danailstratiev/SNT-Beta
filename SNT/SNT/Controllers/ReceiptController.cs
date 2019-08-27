@@ -10,18 +10,14 @@ namespace SNT.Controllers
 {
     public class ReceiptController : Controller
     {
-        private ReceiptService receiptService;
+        private IReceiptService receiptService;
 
-        public ReceiptController(ReceiptService receiptService)
+        public ReceiptController(IReceiptService receiptService)
         {
             this.receiptService = receiptService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        
         [HttpGet("/Receipt/Details")]
         public async Task<IActionResult> Details(string orderId)
         {

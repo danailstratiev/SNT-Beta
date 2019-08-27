@@ -11,7 +11,9 @@ namespace SNT.Services
     {
         OrderConfirmViewModel Create(OrderServiceModel orderServiceModel, string userId);
 
-        OrderConfirmViewModel GetOrder(string userId);
+        OrderConfirmViewModel ReviewOrder(string userId);
+
+        Task<bool> CompleteOrder(string orderId);
 
     }
 }

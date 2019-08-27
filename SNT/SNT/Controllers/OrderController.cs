@@ -48,7 +48,7 @@ namespace SNT.Controllers
         {
             string userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            return View(this.orderService.GetOrder(userId));
+            return View(this.orderService.ReviewOrder(userId));
         }
     }
 }

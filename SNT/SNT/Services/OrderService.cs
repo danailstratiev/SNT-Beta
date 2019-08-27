@@ -2,6 +2,7 @@
 using SNT.Models;
 using SNT.ServiceModels;
 using SNT.Services.Mapping;
+using SNT.ViewModels;
 using SNT.ViewModels.Confirm;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,11 @@ namespace SNT.Services
     public class OrderService : IOrderService
     {
         private SntDbContext context;
-        //private ReceiptService receiptService;
+
 
         public OrderService(SntDbContext context)
         {
             this.context = context;
-            //this.receiptService = receiptService;
         }
 
         public OrderConfirmViewModel Create(OrderServiceModel orderServiceModel, string userId)
@@ -107,7 +107,7 @@ namespace SNT.Services
             return orderConfirmViewModel;
         }
 
-        public OrderConfirmViewModel GetOrder(string userId)
+        public OrderConfirmViewModel ReviewOrder(string userId)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
@@ -132,9 +132,50 @@ namespace SNT.Services
             return orderConfirmViewModel;
         }
 
-        //public async Task<bool> CompleteOrder(string orderId)
-        //{
+        public async Task<bool> CompleteOrder(string orderId)
+        {
+            var order = context.Orders.FirstOrDefault(x => x.OrderStage == Models.Enums.OrderStage.Active &&
+            x.Id == orderId);
 
+            order.OrderStage = Models.Enums.OrderStage.Complete;
+
+            this.context.Orders.Update(order);
+
+            var result = await this.context.SaveChangesAsync();
+
+            return result > 0;
+        }
+
+        public async Task<bool> DeleteIncompleteOrders(string userId)
+        {
+            var incompleteOrders = this.context.Orders.Where(x => x.ClientId == userId &&
+           x.OrderStage == Models.Enums.OrderStage.Active).ToList();
+
+            for (int i = 0; i < incompleteOrders.Count; i++)
+            {
+                var idleTyres = this.context.OrderTyres.Where(x => x.OrderId == incompleteOrders[i].Id).ToList();
+                this.context.OrderTyres.RemoveRange(idleTyres);
+
+                var idleWheelRims = this.context.OrderWheelRims.Where(x => x.OrderId == incompleteOrders[i].Id).ToList();
+                this.context.OrderWheelRims.RemoveRange(idleWheelRims);
+            }
+
+            this.context.Orders.RemoveRange(incompleteOrders);
+
+            var result = await this.context.SaveChangesAsync();
+
+            return result > 0;
+        }
+
+        //public async Task<bool> GetOrdersHistory(string userId)
+        //{
+        //    List<OrderCompleteViewModel> orderHistory = new List<OrderCompleteViewModel>();
+
+        //    foreach (var order in this.context.Orders)
+        //    {
+
+        //    }
         //}
+
     }
 }
