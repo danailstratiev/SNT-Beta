@@ -32,9 +32,11 @@ namespace SNT.Services
             order.ClientId = user.Id;
             order.Client = user;
             order.DateOfCreation = DateTime.UtcNow;
-            order.OrderStage = Models.Enums.OrderStage.Accepted;
+            order.OrderStage = Models.Enums.OrderStage.Active;
 
             HashSet<ShoppingBagTyre> bagTyres = new HashSet<ShoppingBagTyre>();
+
+            var sum = 0m;
 
             foreach (var tyre in this.context.ShoppingBagTyres.Where(x => x.UserId == user.Id))
             {
@@ -54,6 +56,8 @@ namespace SNT.Services
                     Quantity = tyre.Quantity
                 };
 
+                sum += orderTyre.Price * orderTyre.Quantity;
+
                 order.Tyres.Add(orderTyre);
                 this.context.OrderTyres.Add(orderTyre);
             }
@@ -71,9 +75,13 @@ namespace SNT.Services
                     Quantity = wheelRim.Quantity
                 };
 
+                sum += orderWheelRim.Price * orderWheelRim.Quantity;
+                
                 order.WheelRims.Add(orderWheelRim);
                 this.context.OrderWheelRims.Add(orderWheelRim);
             }
+
+            order.Sum = sum;
 
             user.Orders.Add(order);
 
@@ -101,7 +109,7 @@ namespace SNT.Services
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
-            var order = context.Orders.FirstOrDefault(x => x.OrderStage == Models.Enums.OrderStage.Accepted &&
+            var order = context.Orders.FirstOrDefault(x => x.OrderStage == Models.Enums.OrderStage.Active &&
             x.ClientId == userId);
 
             var orderConfirmViewModel = new OrderConfirmViewModel()
@@ -112,7 +120,8 @@ namespace SNT.Services
                 Comment = order.Comment,
                 ClientId = order.ClientId,
                 Client = order.Client,
-                DateOfCreation = order.DateOfCreation
+                DateOfCreation = order.DateOfCreation,
+                Sum = order.Sum
             };
 
             orderConfirmViewModel.Tyres = this.context.OrderTyres.Where(x => x.OrderId == order.Id).ToHashSet();

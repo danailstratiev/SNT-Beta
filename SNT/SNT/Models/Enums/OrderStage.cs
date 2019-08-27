@@ -7,7 +7,7 @@ namespace SNT.Models.Enums
 {
     public enum OrderStage
     {
-        Accepted = 1,
-        Finished = 2
+        Active = 1,
+        Complete = 2
     }
 }

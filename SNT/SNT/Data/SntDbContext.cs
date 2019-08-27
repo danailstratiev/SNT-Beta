@@ -12,7 +12,7 @@ namespace SNT.Data
         public DbSet<MotorOil> MotorOils { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<ShoppingBag> ShoppingBag { get; set; }
-        public DbSet<SntReceipt> SntReceipts { get; set; }
+        public DbSet<Receipt> Receipts { get; set; }
         public DbSet<ShoppingBagTyre> ShoppingBagTyres { get; set; }
         public DbSet<ShoppingBagWheelRim> ShoppingBagWheelRims { get; set; }
         public DbSet<OrderTyre> OrderTyres { get; set; }

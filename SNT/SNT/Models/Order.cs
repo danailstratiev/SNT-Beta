@@ -36,5 +36,7 @@ namespace SNT.Models
         public OrderStage OrderStage { get; set; }
 
         public string Comment { get; set; }
+
+        public decimal Sum { get; set; }
     }
 }
