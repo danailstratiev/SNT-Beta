@@ -17,7 +17,11 @@ namespace SNT.Controllers
             this.receiptService = receiptService;
         }
 
-        
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpGet("/Receipt/Details")]
         public async Task<IActionResult> Details(string orderId)
         {

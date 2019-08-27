@@ -19,8 +19,13 @@ namespace SNT.Controllers
             this.orderService = orderService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
+            string userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            this.orderService.DeleteIncompleteOrders(userId);
+
             return View();
         }
 
@@ -49,6 +54,15 @@ namespace SNT.Controllers
             string userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             return View(this.orderService.ReviewOrder(userId));
+        }
+
+        [HttpPost]
+        [Route("/Order/Index")]
+        public IActionResult Complete(string orderId)
+        {
+            this.orderService.CompleteOrder(orderId);
+
+            return Redirect("/Order/Index");
         }
     }
 }

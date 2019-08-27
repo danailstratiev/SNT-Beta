@@ -167,15 +167,15 @@ namespace SNT.Services
             return result > 0;
         }
 
-        //public async Task<bool> GetOrdersHistory(string userId)
-        //{
-        //    List<OrderCompleteViewModel> orderHistory = new List<OrderCompleteViewModel>();
+        public List<OrderServiceModel> GetOrdersHistory(string userId)
+        {
+            List<Order> orderHistory = this.context.Orders.Where(x => x.ClientId == userId && x.OrderStage == Models.Enums.OrderStage.Complete)
+                .ToList();
 
-        //    foreach (var order in this.context.Orders)
-        //    {
+            List<OrderServiceModel> orderServiceHistoryModels = AutoMapper.Mapper.Map<List<OrderServiceModel>>(orderHistory);
 
-        //    }
-        //}
+            return orderServiceHistoryModels;
+        }
 
     }
 }

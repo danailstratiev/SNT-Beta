@@ -15,5 +15,7 @@ namespace SNT.Services
 
         Task<bool> CompleteOrder(string orderId);
 
+        Task<bool> DeleteIncompleteOrders(string userId);
+
     }
 }

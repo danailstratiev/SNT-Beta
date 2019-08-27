@@ -1,4 +1,5 @@
 ﻿using SNT.Models;
+using SNT.Models.Enums;
 using SNT.Services.Mapping;
 using System;
 using System.Collections.Generic;
