@@ -1,5 +1,6 @@
 ﻿using SNT.Data;
 using SNT.Models;
+using SNT.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,25 @@ namespace SNT.Services
             var result = this.context.SaveChangesAsync();
 
             return true;
+        }
+
+        public ReceiptDetailsViewModel GetReceiptDetails(string orderId)
+        {
+            var receiptFromDb = this.context.Receipts.FirstOrDefault(x => x.OrderId == orderId);
+
+            var receiptDetailsViewModel = new ReceiptDetailsViewModel()
+            {
+                OrderId = receiptFromDb.Id,
+                UserId = receiptFromDb.UserId,
+                Fee = receiptFromDb.Fee,
+                ClientName = receiptFromDb.ClientName,
+                DateOfIssue = receiptFromDb.DateOfIssue,
+                DeliveryAddress = receiptFromDb.DeliveryAddress,
+                Comment = receiptFromDb.Comment,
+                Order = receiptFromDb.Order
+            };
+
+            return receiptDetailsViewModel;
         }
     }
 }
