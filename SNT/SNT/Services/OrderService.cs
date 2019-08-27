@@ -132,18 +132,22 @@ namespace SNT.Services
             return orderConfirmViewModel;
         }
 
-        public async Task<bool> CompleteOrder(string orderId)
+        public void CompleteOrder(string orderId)
         {
             var order = context.Orders.FirstOrDefault(x => x.OrderStage == Models.Enums.OrderStage.Active &&
             x.Id == orderId);
+
+            var userId = order.ClientId;
 
             order.OrderStage = Models.Enums.OrderStage.Complete;
 
             this.context.Orders.Update(order);
 
-            var result = await this.context.SaveChangesAsync();
+            var products = this.context.ShoppingBagTyres.Where(x => x.UserId == userId);
 
-            return result > 0;
+            this.context.ShoppingBagTyres.RemoveRange(products);
+
+           
         }
 
         public async Task<bool> DeleteIncompleteOrders(string userId)

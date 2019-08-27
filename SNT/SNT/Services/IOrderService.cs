@@ -13,7 +13,7 @@ namespace SNT.Services
 
         OrderConfirmViewModel ReviewOrder(string userId);
 
-        Task<bool> CompleteOrder(string orderId);
+        void CompleteOrder(string orderId);
 
         Task<bool> DeleteIncompleteOrders(string userId);
 
