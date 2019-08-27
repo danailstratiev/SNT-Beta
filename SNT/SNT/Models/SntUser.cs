@@ -10,13 +10,13 @@ namespace SNT.Models
     {
         public SntUser()
         {
-            this.MyReceipts = new List<SntReceipt>();
+            this.MyReceipts = new List<Receipt>();
             this.Orders = new List<Order>();
             this.ShoppingBag = new ShoppingBag();
         }
 
         public ShoppingBag ShoppingBag { get; set; }
         public List<Order> Orders { get; set; }
-        public List<SntReceipt> MyReceipts { get; set; }
+        public List<Receipt> MyReceipts { get; set; }
     }
 }

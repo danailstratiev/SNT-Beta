@@ -20,6 +20,8 @@ namespace SNT.Services
 
         public async Task<bool> GenerateReceipt(string userId)
         {
+            var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+            
             var orderFromDb = this.context.Orders.FirstOrDefault(x => x.ClientId == userId && x.OrderStage == Models.Enums.OrderStage.Active);
 
             Receipt receipt = new Receipt()
@@ -36,8 +38,10 @@ namespace SNT.Services
 
             await this.context.Receipts.AddAsync(receipt);
             orderFromDb.OrderStage = Models.Enums.OrderStage.Complete;
+            user.MyReceipts.Add(receipt);
 
             this.context.Update(orderFromDb);
+            this.context.Update(user);
 
             var result = this.context.SaveChangesAsync();
 
