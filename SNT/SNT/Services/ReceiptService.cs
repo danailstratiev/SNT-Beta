@@ -42,7 +42,6 @@ namespace SNT.Services
             user.MyReceipts.Add(receipt);
 
             this.context.Update(orderFromDb);
-            this.context.Update(user);
 
             var result = this.context.SaveChangesAsync();
 

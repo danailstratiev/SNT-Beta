@@ -13,10 +13,12 @@ namespace SNT.Services
     public class OrderService : IOrderService
     {
         private SntDbContext context;
+        //private ReceiptService receiptService;
 
         public OrderService(SntDbContext context)
         {
             this.context = context;
+            //this.receiptService = receiptService;
         }
 
         public OrderConfirmViewModel Create(OrderServiceModel orderServiceModel, string userId)
@@ -129,5 +131,10 @@ namespace SNT.Services
 
             return orderConfirmViewModel;
         }
+
+        //public async Task<bool> CompleteOrder(string orderId)
+        //{
+
+        //}
     }
 }

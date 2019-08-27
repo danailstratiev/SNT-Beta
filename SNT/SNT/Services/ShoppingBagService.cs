@@ -26,13 +26,13 @@ namespace SNT.Services
                 return false;
             }
 
-            if (user.ShoppingBag.UserId == null)
-            {
-                user.ShoppingBag.UserId = user.Id;
-                user.ShoppingBag.User = user;
-            }
+            //if (user.ShoppingBag.UserId == null)
+            //{
+            //    user.ShoppingBag.UserId = user.Id;
+            //    user.ShoppingBag.User = user;
+            //}
 
-            this.context.ShoppingBag.Update(user.ShoppingBag);
+            //this.context.ShoppingBag.Update(user.ShoppingBag);
 
 
             var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.UserId == user.Id && x.TyreId == tyreId);

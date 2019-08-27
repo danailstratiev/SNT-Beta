@@ -88,5 +88,11 @@
 
     <p><a href="/ShoppingBag/Index">ShoppingBag</a></p>
     <p></p>
-    <p><a href="/Receipt/Details">Confirm Order</a></p>
+
+    <a href="/Receipt/Details">
+        <form asp-action="Details" asp-controller="Receipt" method="Get">
+            <input type="hidden" value="@Model.Id" name="orderId" />
+            <input type="submit" value="Confirm Order" class="btn btn-primary" />
+        </form>
+    </a>
 </div>
