@@ -57,6 +57,12 @@ namespace SNT.Areas.Administration.Controllers
             return Redirect("/");
         }
 
+        [HttpGet]
+        public IActionResult Edit(string id)
+        {
+            return View();
+        }
+
 
     }
 }
