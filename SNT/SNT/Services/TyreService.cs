@@ -83,7 +83,25 @@ namespace SNT.Services
         {
             throw new NotImplementedException();
         }
-                
+
+        public async Task<bool> DeleteTyre(string id)
+        {
+            var tyre = this.context.Tyres.SingleOrDefault(x => x.Id == id);
+
+            var bagTyre = this.context.ShoppingBagTyres.FirstOrDefault(x => x.TyreId == id);
+
+            if (bagTyre == null)
+            {
+                this.context.ShoppingBagTyres.Remove(bagTyre);
+            }
+
+            this.context.Tyres.Remove(tyre);
+
+            var result = await this.context.SaveChangesAsync();
+
+            return result > 0;
+        }
+
         public TyreServiceModel GetTyreById(string id)
         {
             return this.context.Tyres.To<TyreServiceModel>().SingleOrDefault(x => x.Id == id);

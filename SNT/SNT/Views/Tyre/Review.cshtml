@@ -84,6 +84,14 @@
     </dl>
 </div>
 
+@if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+{
+    <form asp-action="Delete" asp-controller="Tyre" method="POST">
+        <input type="hidden" value="@Model.Id" name="tyreId" />
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    </form>
+}
+
 
 <form asp-action="AddToBag" asp-controller="Tyre" method="POST">
     <input type="hidden" value="@Model.Id" name="tyreId" />

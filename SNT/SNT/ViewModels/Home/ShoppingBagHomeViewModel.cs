@@ -34,12 +34,12 @@ namespace SNT.ViewModels.Home
 
             foreach (var tyre in this.Tyres)
             {
-                sum += tyre.Price;
+                sum += tyre.Price*tyre.Quantity;
             }
 
             foreach (var wheelRim in this.WheelRims)
             {
-                sum += wheelRim.Price;
+                sum += wheelRim.Price*wheelRim.Quantity;
             }
 
             return sum;

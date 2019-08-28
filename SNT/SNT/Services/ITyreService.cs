@@ -15,24 +15,12 @@ namespace SNT.Services
 
        TyreServiceModel GetTyreById(string id);
 
-        IQueryable<TyreServiceModel> GetAllTyresByPriceAscending();
+        Task<bool> DeleteTyre(string id);
 
-        IQueryable<TyreServiceModel> GetAllTyresByPriceDescending();
+        IQueryable<TyreServiceModel> GetAllTyres();
 
-        IQueryable<TyreServiceModel> GetAllSummerTyres();
-
-        IQueryable<TyreServiceModel> GetAllWinterTyres();
-
-        IQueryable<TyreServiceModel> GetAllTyresByBrand();
-
-        IQueryable<TyreServiceModel> GetAllTyresByWidth();
-
-        IQueryable<TyreServiceModel> GetAllTyresByRatio();
-
-        IQueryable<TyreServiceModel> GetAllTyresByDiameter();
 
         IQueryable<TyreServiceModel> GetAllAvailableTyres();
 
-        IQueryable<TyreServiceModel> GetAllTyres();
     }
 }

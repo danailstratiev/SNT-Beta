@@ -47,5 +47,16 @@ namespace SNT.Areas.Administration.Controllers
 
             return this.Redirect("/");
         }
+
+        [HttpPost]
+        [Route("/Home/Tyres")]
+        public IActionResult Delete(string id)
+        {
+            this.tyreService.DeleteTyre(id);
+
+            return Redirect("/");
+        }
+
+
     }
 }
