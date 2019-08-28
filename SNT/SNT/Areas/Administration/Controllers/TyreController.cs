@@ -52,7 +52,7 @@ namespace SNT.Areas.Administration.Controllers
         [Route("/Home/Tyres")]
         public IActionResult Delete(string id)
         {
-            this.tyreService.DeleteTyre(id);
+            this.tyreService.MakeTyreOutOfStock(id);
 
             return Redirect("/");
         }
@@ -60,6 +60,7 @@ namespace SNT.Areas.Administration.Controllers
         [HttpGet]
         public IActionResult Edit(string id)
         {
+
             return View();
         }
 

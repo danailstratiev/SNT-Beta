@@ -15,7 +15,7 @@ namespace SNT.Services
 
        TyreServiceModel GetTyreById(string id);
 
-        Task<bool> DeleteTyre(string id);
+        Task<bool> MakeTyreOutOfStock(string id);
 
         IQueryable<TyreServiceModel> GetAllTyres();
 

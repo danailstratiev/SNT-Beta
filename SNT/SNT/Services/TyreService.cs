@@ -1,7 +1,9 @@
-﻿using SNT.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SNT.Data;
 using SNT.Models;
 using SNT.ServiceModels;
 using SNT.Services.Mapping;
+using SNT.ViewModels.Edit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,23 +86,32 @@ namespace SNT.Services
             throw new NotImplementedException();
         }
 
-        public async Task<bool> DeleteTyre(string id)
+        public async Task<bool> MakeTyreOutOfStock(string id)
         {
             var tyre = this.context.Tyres.SingleOrDefault(x => x.Id == id);
 
-            var bagTyre = this.context.ShoppingBagTyres.FirstOrDefault(x => x.TyreId == id);
+            tyre.Status = Models.Enums.AvailabilityStatus.OutOfStock;
 
-            if (bagTyre == null)
-            {
-                this.context.ShoppingBagTyres.Remove(bagTyre);
-            }
-
-            this.context.Tyres.Remove(tyre);
+            this.context.Tyres.Update(tyre);
 
             var result = await this.context.SaveChangesAsync();
 
             return result > 0;
         }
+
+        public async Task<bool> EditTyre (EditTyreViewModel tyre)
+        {
+            var tyreFromDb = await this.context.Tyres.SingleOrDefaultAsync(p => p.Id == tyre.Id);
+
+            AutoMapper.Mapper.Map(tyre, tyreFromDb);
+
+            this.context.Tyres.Update(tyreFromDb);
+
+            var result = await this.context.SaveChangesAsync();
+
+            return result > 0;
+        }
+
 
         public TyreServiceModel GetTyreById(string id)
         {
