@@ -9,7 +9,7 @@ using SNT.Services;
 
 namespace SNT.Areas.Administration.Controllers
 {
-    public class MotorOilController : Controller
+    public class MotorOilController : AdminController
     {
         private readonly IMotorOilService motorOilService;
         private readonly ICloudinaryService cloudinaryService;
@@ -20,13 +20,13 @@ namespace SNT.Areas.Administration.Controllers
             this.cloudinaryService = cloudinaryService;
         }
 
-        [HttpGet("/Administration/MotorOil/Create")]
+        [HttpGet("Administration/MotorOil/Create")]
         public async Task<IActionResult> Create()
         {
             return this.View();
         }
 
-        [HttpPost("/Administration/Tyres/Create")]
+        [HttpPost("/Administration/MotorOil/Create")]
         public async Task<IActionResult> Create(MotorOilCreateInputModel motorOilCreateInputModel)
         {
             if (!this.ModelState.IsValid)

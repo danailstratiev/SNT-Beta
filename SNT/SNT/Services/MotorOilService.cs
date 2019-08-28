@@ -13,19 +13,23 @@ namespace SNT.Services
     {
         private SntDbContext context;
 
+        public MotorOilService(SntDbContext context)
+        {
+            this.context = context;
+        }
+
         public async Task<bool> Create(MotorOilServiceModel motorOilServiceModel)
         {
             MotorOil  motorOil = AutoMapper.Mapper.Map<MotorOil>(motorOilServiceModel);
 
-            context.MotorOils.Add(motorOil);
+            this.context.MotorOils.Add(motorOil);
             int result = await context.SaveChangesAsync();
             return result > 0;
         }
 
         public IQueryable<MotorOilServiceModel> GetAllAvailableOils()
         {
-            return this.context.MotorOils.Where(x => x.Status == Models.Enums.AvailabilityStatus.InStock).
-                To<MotorOilServiceModel>();
+            return this.context.MotorOils.To<MotorOilServiceModel>();
         }
     }
 }
