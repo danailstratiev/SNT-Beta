@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SNT.ViewModels
+namespace SNT.ViewModels.Review
 {
-    public class OrderCompleteViewModel : IMapFrom<OrderServiceModel>, IMapTo<OrderServiceModel>
+    public class OrderReviewViewModel : IMapFrom<OrderServiceModel>
     {
         public string Id { get; set; }
 
@@ -34,5 +34,6 @@ namespace SNT.ViewModels
         public string Comment { get; set; }
 
         public decimal Sum { get; set; }
+
     }
 }

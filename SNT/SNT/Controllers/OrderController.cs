@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using SNT.InputModels;
 using SNT.ServiceModels;
 using SNT.Services;
+using SNT.ViewModels;
 
 namespace SNT.Controllers
 {
@@ -63,6 +64,26 @@ namespace SNT.Controllers
             this.orderService.CompleteOrder(orderId);
 
             return Redirect("/Order/Index");
+        }
+
+        [HttpGet]
+        public IActionResult OrderHistory()
+        {
+            string userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var orderHistory = this.orderService.GetOrdersHistory(userId);
+
+            List<OrderCompleteViewModel> orderServiceHistoryModels = AutoMapper.Mapper.Map<List<OrderCompleteViewModel>>(orderHistory);
+
+            return View(orderServiceHistoryModels);
+        }
+
+        [HttpGet]
+        public IActionResult Review(string orderId)
+        {
+            var orderReviewViewModel = this.orderService.GetOrderReview(orderId);
+
+            return View(orderReviewViewModel);
         }
     }
 }

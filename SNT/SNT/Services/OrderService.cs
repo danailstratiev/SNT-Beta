@@ -4,6 +4,7 @@ using SNT.ServiceModels;
 using SNT.Services.Mapping;
 using SNT.ViewModels;
 using SNT.ViewModels.Confirm;
+using SNT.ViewModels.Review;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -143,11 +144,16 @@ namespace SNT.Services
 
             this.context.Orders.Update(order);
 
-            var products = this.context.ShoppingBagTyres.Where(x => x.UserId == userId);
+            var bagTyres = this.context.ShoppingBagTyres.Where(x => x.UserId == userId);
 
-            this.context.ShoppingBagTyres.RemoveRange(products);
+            var bagWheelRims = this.context.ShoppingBagWheelRims.Where(x => x.UserId == userId);
 
-           
+            this.context.ShoppingBagTyres.RemoveRange(bagTyres);
+
+            this.context.ShoppingBagWheelRims.RemoveRange(bagWheelRims);
+
+            this.context.SaveChanges();
+
         }
 
         public async Task<bool> DeleteIncompleteOrders(string userId)
@@ -181,5 +187,22 @@ namespace SNT.Services
             return orderServiceHistoryModels;
         }
 
+        public OrderReviewViewModel GetOrderReview (string orderId)
+        {
+            var orderFromDb = this.context.Orders.FirstOrDefault(x => x.Id == orderId);
+
+            OrderServiceModel orderServiceModel = AutoMapper.Mapper.Map<OrderServiceModel>(orderFromDb);
+
+            OrderReviewViewModel orderReviewViewModel = AutoMapper.Mapper.Map<OrderReviewViewModel>(orderServiceModel);
+
+            var orderTyres = this.context.OrderTyres.Where(x => x.OrderId == orderId).ToHashSet();
+
+            var orderWheelRims = this.context.OrderWheelRims.Where(x => x.OrderId == orderId).ToHashSet();
+
+            orderReviewViewModel.Tyres = orderTyres;
+            orderReviewViewModel.WheelRims = orderWheelRims;
+
+            return orderReviewViewModel;
+        }
     }
 }
