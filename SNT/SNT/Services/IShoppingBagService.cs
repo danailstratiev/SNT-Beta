@@ -16,5 +16,6 @@ namespace SNT.Services
 
         Task<bool> RemoveAllShoppingBagProducts(string userId);
 
+        void UpdateShoppingBagTyreQuantity(string bagTyreId, int quantity);
     }
 }

@@ -153,5 +153,15 @@ namespace SNT.Services
             return result > 0;
         }
 
+        public void UpdateShoppingBagTyreQuantity (string bagTyreId,int quantity)
+        {
+            var tyreFromDb = this.context.ShoppingBagTyres.FirstOrDefault(x => x.Id == bagTyreId);
+
+            tyreFromDb.Quantity = quantity;
+
+            this.context.Update(tyreFromDb);
+
+            this.context.SaveChanges();
+        }
     }
 }

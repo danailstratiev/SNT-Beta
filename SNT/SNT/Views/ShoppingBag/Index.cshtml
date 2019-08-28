@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+        
 }
 
 <h1>ShoppingBag</h1>
@@ -19,6 +19,13 @@
             <p>@tyre.Brand</p>
             <p>@tyre.Price</p>
             <p>@tyre.Quantity</p>
+
+            <form id="quantity-form" action="EditTyreQuantity" controller="ShoppingBag" method="POST">
+                <label asp-for="@tyre.Quantity" class="control-label"></label>
+                <input asp-for="@tyre.Quantity" class="form-control" name="quantity" />
+                <input type="hidden" value="@tyre.Id" name="bagTyreId" />
+                <input type="submit" value="Update Quantity" class="btn btn-primary" />
+            </form>
         }
     </div>
     <div class="col-md-4">
@@ -39,6 +46,14 @@
 </div>
 
 <p><a href="/Order/Create">Proceed to checkout</a></p>
+
+
+
+@*<script>
+    $('#quantityvalue').change(function () {
+        $('#quantity-form').submit();
+    });
+</script>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

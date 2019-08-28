@@ -23,22 +23,27 @@ namespace SNT.Controllers
             this.shoppingbagService = shoppingbagService;
             this.context = context;
         }
-
+        [HttpGet("/Shoppingbag/Index")]
         public IActionResult Index()
         {
             string userId = this.userManager.GetUserId(this.HttpContext.User);
 
             var shoppingBagHomeViewModel = this.shoppingbagService.GetAllCartProducts(userId);
-
+            shoppingBagHomeViewModel.Sum();
             //ToDo Refactor this
             //TyreServiceModel tyreServiceModel = AutoMapper.Mapper.Map<TyreServiceModel>(tyreCreateInputModel);
             
             return View(shoppingBagHomeViewModel);
         }
 
-        public IActionResult EditShoppingBagQuantity(string id)
+        [HttpPost]
+        //[Route("/Shoppingbag/Index")]
+        public IActionResult EditTyreQuantity(string bagTyreId,int quantity)
         {
-            return View();
+
+            this.shoppingbagService.UpdateShoppingBagTyreQuantity( bagTyreId, quantity);
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult CalculateTotalPrice(string id)
