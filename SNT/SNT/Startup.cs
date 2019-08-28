@@ -75,6 +75,7 @@ namespace SNT
 
             services.AddTransient<ITyreService, TyreService>();
             services.AddTransient<IWheelRimService, WheelRimService>();
+            services.AddTransient<IMotorOilService, MotorOilService>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IShoppingBagService, ShoppingBagService>();
             services.AddTransient<IReceiptService, ReceiptService>();

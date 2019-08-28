@@ -1,13 +1,14 @@
-﻿using SNT.Models.Enums;
-using SNT.Models.Interfaces;
+﻿using SNT.Models;
+using SNT.Models.Enums;
+using SNT.Services.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SNT.Models
+namespace SNT.ServiceModels
 {
-    public class MotorOil : IProduct
+    public class MotorOilServiceModel : IMapFrom<MotorOil>, IMapTo<MotorOil>
     {
         public string Id { get; set; }
 
