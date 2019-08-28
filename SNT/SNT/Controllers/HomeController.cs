@@ -15,6 +15,7 @@ namespace SNT.Controllers
     {
         private ITyreService tyreService;
         private IWheelRimService wheelRimService;
+        private IMotorOilService motorOilService;
 
         public HomeController(ITyreService tyreService, IWheelRimService wheelRimService)
         {
@@ -89,6 +90,28 @@ namespace SNT.Controllers
                 .ToListAsync();
 
             return View(wheelRims);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> MotorOils()
+        {
+            List<MotorOilHomeViewModel> motorOils = await this.motorOilService.GetAllAvailableOils().
+                Select(motorOil => new MotorOilHomeViewModel
+                {
+                    Id = motorOil.Id,
+                    Model = motorOil.Model,
+                    Brand = motorOil.Brand,
+                    Viscosity = motorOil.Viscosity,
+                    Status = motorOil.Status,
+                    Picture = motorOil.Picture,
+                    Price = motorOil.Price,
+                    Volume = motorOil.Volume,
+                    Type = motorOil.Type,
+                    Description = motorOil.Description
+                })
+                .ToListAsync();
+
+            return View(motorOils);
         }
     }
 }
