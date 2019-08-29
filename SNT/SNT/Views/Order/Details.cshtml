@@ -10,7 +10,7 @@
 <div>
     <h4>OrderConfirmViewModel</h4>
     <hr />
-    <dl class="row justify-content-center">
+    <dl class="col justify-content-center">
 
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DateOfCreation)
@@ -61,12 +61,20 @@
                 <p>@wheelRim.Quantity</p>
             }
         </dd>
+
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.OrderStage)
+            MotorOils
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.OrderStage)
+            @foreach (var motorOil in Model.MotorOils)
+            {
+                <p>@motorOil.Model</p>
+                <p>@motorOil.Brand</p>
+                <p>@motorOil.Price</p>
+                <p>@motorOil.Quantity</p>
+            }
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Comment)
         </dt>

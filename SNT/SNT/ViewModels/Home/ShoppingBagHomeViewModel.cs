@@ -46,6 +46,11 @@ namespace SNT.ViewModels.Home
                 sum += wheelRim.Price*wheelRim.Quantity;
             }
 
+            foreach (var motorOil in this.MotorOils)
+            {
+                sum += motorOil.Price* motorOil.Quantity;
+            }
+
             return sum;
         }
 

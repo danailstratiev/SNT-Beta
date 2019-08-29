@@ -24,7 +24,7 @@ namespace SNT.Areas.Administration.Controllers
         [HttpGet("/Administration/Tyre/Create")]
         public async Task<IActionResult> Create()
         {
-            return this.View("/Tyre/Create");
+            return this.View();
         }
 
         [HttpPost("/Administration/Tyre/Create")]

@@ -28,6 +28,8 @@ namespace SNT.ServiceModels
 
         public HashSet<OrderWheelRim> WheelRims { get; set; }
 
+        public HashSet<OrderMotorOil> MotorOils { get; set; }
+
         public OrderStage OrderStage { get; set; }
 
         public string Comment { get; set; }

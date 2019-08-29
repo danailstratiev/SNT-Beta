@@ -65,7 +65,7 @@ namespace SNT.Services
                 this.context.OrderTyres.Add(orderTyre);
             }
 
-            foreach (var wheelRim in user.ShoppingBag.WheelRims)
+            foreach (var wheelRim in this.context.ShoppingBagWheelRims.Where(x => x.UserId == user.Id))
             {
                 var orderWheelRim = new OrderWheelRim()
                 {
@@ -82,6 +82,25 @@ namespace SNT.Services
                 
                 order.WheelRims.Add(orderWheelRim);
                 this.context.OrderWheelRims.Add(orderWheelRim);
+            }
+
+            foreach (var motorOil in this.context.ShoppingBagMotorOils.Where(x => x.UserId == user.Id))
+            {
+                var orderMotorOil = new OrderMotorOil()
+                {
+                    OrderId = order.Id,
+                    UserId = user.Id,
+                    MotorOilId = motorOil.MotorOilId,
+                    Model = motorOil.Model,
+                    Brand = motorOil.Brand,
+                    Price = motorOil.Price,
+                    Quantity = motorOil.Quantity
+                };
+
+                sum += orderMotorOil.Price * orderMotorOil.Quantity;
+                
+                order.MotorOils.Add(orderMotorOil);
+                this.context.OrderMotorOils.Add(orderMotorOil);
             }
 
             order.Sum = sum;
@@ -128,7 +147,8 @@ namespace SNT.Services
             };
 
             orderConfirmViewModel.Tyres = this.context.OrderTyres.Where(x => x.OrderId == order.Id).ToHashSet();
-            orderConfirmViewModel.WheelRims = order.WheelRims;
+            orderConfirmViewModel.WheelRims = this.context.OrderWheelRims.Where(x => x.OrderId == order.Id).ToHashSet();
+            orderConfirmViewModel.MotorOils = this.context.OrderMotorOils.Where(x => x.OrderId == order.Id).ToHashSet();
 
             return orderConfirmViewModel;
         }
@@ -148,9 +168,13 @@ namespace SNT.Services
 
             var bagWheelRims = this.context.ShoppingBagWheelRims.Where(x => x.UserId == userId);
 
+            var bagMotorOils = this.context.ShoppingBagMotorOils.Where(x => x.UserId == userId);
+
             this.context.ShoppingBagTyres.RemoveRange(bagTyres);
 
             this.context.ShoppingBagWheelRims.RemoveRange(bagWheelRims);
+
+            this.context.ShoppingBagMotorOils.RemoveRange(bagMotorOils);
 
             this.context.SaveChanges();
 
@@ -168,6 +192,9 @@ namespace SNT.Services
 
                 var idleWheelRims = this.context.OrderWheelRims.Where(x => x.OrderId == incompleteOrders[i].Id).ToList();
                 this.context.OrderWheelRims.RemoveRange(idleWheelRims);
+
+                var idleMotorOils = this.context.OrderMotorOils.Where(x => x.OrderId == incompleteOrders[i].Id).ToList();
+                this.context.OrderMotorOils.RemoveRange(idleMotorOils);
             }
 
             this.context.Orders.RemoveRange(incompleteOrders);
@@ -199,8 +226,11 @@ namespace SNT.Services
 
             var orderWheelRims = this.context.OrderWheelRims.Where(x => x.OrderId == orderId).ToHashSet();
 
+            var orderMotorOils = this.context.OrderMotorOils.Where(x => x.OrderId == orderId).ToHashSet();
+
             orderReviewViewModel.Tyres = orderTyres;
             orderReviewViewModel.WheelRims = orderWheelRims;
+            orderReviewViewModel.MotorOils = orderMotorOils;
 
             return orderReviewViewModel;
         }

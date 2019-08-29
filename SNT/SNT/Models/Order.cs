@@ -11,8 +11,9 @@ namespace SNT.Models
         public Order()
         {
             this.Id = Guid.NewGuid().ToString();
-            Tyres = new HashSet<OrderTyre>();
-            WheelRims = new HashSet<OrderWheelRim>();
+            this.Tyres = new HashSet<OrderTyre>();
+            this.WheelRims = new HashSet<OrderWheelRim>();
+            this.MotorOils = new HashSet<OrderMotorOil>();
         }
 
         public string Id { get; set; }
@@ -31,7 +32,9 @@ namespace SNT.Models
 
         public HashSet<OrderTyre> Tyres { get; set; }
 
-        public HashSet<OrderWheelRim> WheelRims{ get; set; }
+        public HashSet<OrderWheelRim> WheelRims { get; set; }
+
+        public HashSet<OrderMotorOil> MotorOils { get; set; }
 
         public OrderStage OrderStage { get; set; }
 

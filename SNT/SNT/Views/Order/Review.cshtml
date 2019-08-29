@@ -10,7 +10,7 @@
 <div>
     <h4>OrderReviewViewModel</h4>
     <hr />
-    <dl class="row justify-content-center">
+    <dl class="col justify-content-center">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Id)
         </dt>
@@ -60,7 +60,8 @@
             @Html.DisplayFor(model => model.Sum)
         </dd>
     </dl>
-    <div class="row justify-content-center">
+    <div class="col justify-content-center">
+        <p>Tyres</p>
         <div class="col-md-4">
             @foreach (var tyre in Model.Tyres)
             {
@@ -70,6 +71,7 @@
                 <p>@tyre.Quantity</p>
             }
         </div>
+        <p>WheelRims</p>
         <div class="col-md-4">
             @foreach (var wheelRim in Model.WheelRims)
             {
@@ -77,6 +79,16 @@
                 <p>@wheelRim.Brand</p>
                 <p>@wheelRim.Price</p>
                 <p>@wheelRim.Quantity</p>
+            }
+        </div> 
+        <p>Motor Oils</p>
+        <div class="col-md-4">
+            @foreach (var motorOil in Model.MotorOils)
+            {
+                <p>@motorOil.Model</p>
+                <p>@motorOil.Brand</p>
+                <p>@motorOil.Price</p>
+                <p>@motorOil.Quantity</p>
             }
         </div>
     </div>
