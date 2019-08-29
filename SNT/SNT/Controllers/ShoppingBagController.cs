@@ -46,6 +46,14 @@ namespace SNT.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult EditWheelRimQuantity(string bagWheelRimId,int quantity)
+        {
+
+            this.shoppingbagService.UpdateShoppingBagWheelRimQuantity(bagWheelRimId, quantity);
+
+            return RedirectToAction("Index");
+        }
+
         public IActionResult CalculateTotalPrice(string id)
         {
             return View();

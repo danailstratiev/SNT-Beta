@@ -25,16 +25,7 @@ namespace SNT.Services
             {
                 return false;
             }
-
-            //if (user.ShoppingBag.UserId == null)
-            //{
-            //    user.ShoppingBag.UserId = user.Id;
-            //    user.ShoppingBag.User = user;
-            //}
-
-            //this.context.ShoppingBag.Update(user.ShoppingBag);
-
-
+                      
             var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.UserId == user.Id && x.TyreId == tyreId);
 
             if (currentTyre != null)
@@ -62,6 +53,42 @@ namespace SNT.Services
             return true;
         }
 
+        //public async Task<bool> AddMotorOilToShoppingBag(string motorOilId, string userId)
+        //{
+        //    var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+
+        //    if (user == null || motorOilId == null)
+        //    {
+        //        return false;
+        //    }
+                      
+        //    var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.UserId == user.Id && x.TyreId == motorOilId);
+
+        //    if (currentTyre != null)
+        //    {
+        //        return true;
+        //    }
+
+        //    var tyre = this.context.MotorOils.SingleOrDefault(x => x.Id == motorOilId);
+
+        //    var shoppingBagTyre = new ShoppingBagTyre
+        //    {
+        //        UserId = user.Id,
+        //        TyreId = tyreId,
+        //        Model = tyre.Model,
+        //        Brand = tyre.Brand,
+        //        Price = tyre.Price,
+        //        Picture = tyre.Picture,
+        //        Quantity = 1,
+        //    };
+
+        //    this.context.ShoppingBagTyres.Add(shoppingBagTyre);
+
+        //    await this.context.SaveChangesAsync();
+
+        //    return true;
+        //}
+
         public async Task<bool> AddWheelRimToShoppingBag(string wheelRimId, string userId)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
@@ -71,14 +98,6 @@ namespace SNT.Services
                 return false;
             }
 
-            if (user.ShoppingBag.UserId == null)
-            {
-                user.ShoppingBag.UserId = user.Id;
-                user.ShoppingBag.User = user;
-            }
-
-            this.context.ShoppingBag.Update(user.ShoppingBag);
-            
             var currentTyre = context.ShoppingBagWheelRims.FirstOrDefault(x => x.UserId == user.Id && x.WheelRimId == wheelRimId);
 
             if (currentTyre != null)
@@ -160,6 +179,17 @@ namespace SNT.Services
             tyreFromDb.Quantity = quantity;
 
             this.context.Update(tyreFromDb);
+
+            this.context.SaveChanges();
+        }
+
+        public void UpdateShoppingBagWheelRimQuantity (string bagWheelRimId,int quantity)
+        {
+            var wheelRimFromDb = this.context.ShoppingBagWheelRims.FirstOrDefault(x => x.Id == bagWheelRimId);
+
+            wheelRimFromDb.Quantity = quantity;
+
+            this.context.Update(wheelRimFromDb);
 
             this.context.SaveChanges();
         }
