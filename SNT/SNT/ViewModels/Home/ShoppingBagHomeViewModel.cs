@@ -12,11 +12,14 @@ namespace SNT.ViewModels.Home
     public class ShoppingBagHomeViewModel : IMapFrom<ShoppingBagServiceModel>
     {
         public ShoppingBagHomeViewModel(HashSet<ShoppingBagTyre> tyres,
-            HashSet<ShoppingBagWheelRim> wheelRims, string userId)
+            HashSet<ShoppingBagWheelRim> wheelRims,
+             HashSet<ShoppingBagMotorOil> motorOils, string userId)
         {
             this.Tyres = tyres;
 
             this.WheelRims = wheelRims;
+
+            this.MotorOils = motorOils;
 
             this.UserId = userId;
         }
@@ -25,6 +28,7 @@ namespace SNT.ViewModels.Home
 
         public HashSet<ShoppingBagTyre> Tyres { get; set; }
         public HashSet<ShoppingBagWheelRim> WheelRims { get; set; }
+        public HashSet<ShoppingBagMotorOil> MotorOils { get; set; }
 
         public decimal TotalSum { get => Sum(); }
 

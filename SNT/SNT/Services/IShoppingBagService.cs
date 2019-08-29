@@ -12,6 +12,8 @@ namespace SNT.Services
 
         Task<bool> AddWheelRimToShoppingBag(string wheelRimId, string userId);
 
+        Task<bool> AddMotorOilToShoppingBag(string motorOilId, string userId);
+
         ShoppingBagHomeViewModel GetAllCartProducts(string userId);
 
         Task<bool> RemoveAllShoppingBagProducts(string userId);
@@ -20,5 +22,6 @@ namespace SNT.Services
 
         void UpdateShoppingBagWheelRimQuantity(string bagWheelRimId, int quantity);
 
+        void UpdateShoppingBagMotorOilQuantity(string motorOilId, int quantity);
     }
 }

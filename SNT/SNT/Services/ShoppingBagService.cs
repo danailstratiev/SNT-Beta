@@ -53,41 +53,41 @@ namespace SNT.Services
             return true;
         }
 
-        //public async Task<bool> AddMotorOilToShoppingBag(string motorOilId, string userId)
-        //{
-        //    var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
+        public async Task<bool> AddMotorOilToShoppingBag(string motorOilId, string userId)
+        {
+            var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
-        //    if (user == null || motorOilId == null)
-        //    {
-        //        return false;
-        //    }
-                      
-        //    var currentTyre = context.ShoppingBagTyres.FirstOrDefault(x => x.UserId == user.Id && x.TyreId == motorOilId);
+            if (user == null || motorOilId == null)
+            {
+                return false;
+            }
 
-        //    if (currentTyre != null)
-        //    {
-        //        return true;
-        //    }
+            var currentMotorOil = context.ShoppingBagMotorOils.FirstOrDefault(x => x.UserId == user.Id && x.MotorOilId == motorOilId);
 
-        //    var tyre = this.context.MotorOils.SingleOrDefault(x => x.Id == motorOilId);
+            if (currentMotorOil != null)
+            {
+                return true;
+            }
 
-        //    var shoppingBagTyre = new ShoppingBagTyre
-        //    {
-        //        UserId = user.Id,
-        //        TyreId = tyreId,
-        //        Model = tyre.Model,
-        //        Brand = tyre.Brand,
-        //        Price = tyre.Price,
-        //        Picture = tyre.Picture,
-        //        Quantity = 1,
-        //    };
+            var motorOil = this.context.MotorOils.SingleOrDefault(x => x.Id == motorOilId);
 
-        //    this.context.ShoppingBagTyres.Add(shoppingBagTyre);
+            var shoppingMotorOil = new ShoppingBagMotorOil
+            {
+                UserId = user.Id,
+                MotorOilId = motorOil.Id,
+                Model = motorOil.Model,
+                Brand = motorOil.Brand,
+                Price = motorOil.Price,
+                Picture = motorOil.Picture,
+                Quantity = 1,
+            };
 
-        //    await this.context.SaveChangesAsync();
+            this.context.ShoppingBagMotorOils.Add(shoppingMotorOil);
 
-        //    return true;
-        //}
+            await this.context.SaveChangesAsync();
+
+            return true;
+        }
 
         public async Task<bool> AddWheelRimToShoppingBag(string wheelRimId, string userId)
         {
@@ -143,13 +143,21 @@ namespace SNT.Services
                 bagWheelRims.Add(wheelRim);
             }
 
+            HashSet<ShoppingBagMotorOil> bagMotorOils = new HashSet<ShoppingBagMotorOil>();
+
+            foreach (var motorOil in this.context.ShoppingBagMotorOils.Where(x => x.UserId == user.Id))
+            {
+                bagMotorOils.Add(motorOil);
+            }
+
             user.ShoppingBag.Tyres = bagTyres;
             user.ShoppingBag.WheelRims = bagWheelRims;
+            user.ShoppingBag.MotorOils = bagMotorOils;
 
             this.context.ShoppingBag.Update(user.ShoppingBag);
             this.context.SaveChangesAsync();
 
-            return new ShoppingBagHomeViewModel(bagTyres, bagWheelRims, user.Id);
+            return new ShoppingBagHomeViewModel(bagTyres, bagWheelRims, bagMotorOils, user.Id);
         }
 
         //public async Task<bool> RemoveTyreFromShoppingBag(string tyreId, string userId)
@@ -190,6 +198,17 @@ namespace SNT.Services
             wheelRimFromDb.Quantity = quantity;
 
             this.context.Update(wheelRimFromDb);
+
+            this.context.SaveChanges();
+        }
+
+        public void UpdateShoppingBagMotorOilQuantity (string motorOilId, int quantity)
+        {
+            var motorOilFromDb = this.context.ShoppingBagMotorOils.FirstOrDefault(x => x.Id == motorOilId);
+
+            motorOilFromDb.Quantity = quantity;
+
+            this.context.Update(motorOilFromDb);
 
             this.context.SaveChanges();
         }

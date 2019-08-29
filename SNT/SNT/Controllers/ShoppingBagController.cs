@@ -54,6 +54,14 @@ namespace SNT.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult EditMotorOilQuantity(string motorOilId, int quantity)
+        {
+
+            this.shoppingbagService.UpdateShoppingBagMotorOilQuantity(motorOilId, quantity);
+
+            return RedirectToAction("Index");
+        }
+
         public IActionResult CalculateTotalPrice(string id)
         {
             return View();

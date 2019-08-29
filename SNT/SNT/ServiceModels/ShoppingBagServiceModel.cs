@@ -17,5 +17,7 @@ namespace SNT.ServiceModels
 
         public HashSet<ShoppingBagWheelRim> WheelRims { get; set; }
 
+        public HashSet<ShoppingBagMotorOil> MotorOils { get; set; }
+
     }
 }

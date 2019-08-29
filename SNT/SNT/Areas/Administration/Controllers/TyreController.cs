@@ -21,13 +21,13 @@ namespace SNT.Areas.Administration.Controllers
             this.cloudinaryService = cloudinaryService;
         }
 
-        [HttpGet("/Administration/Tyres/Create")]
+        [HttpGet("/Administration/Tyre/Create")]
         public async Task<IActionResult> Create()
         {
-            return this.View("/Tyres/Create");
+            return this.View("/Tyre/Create");
         }
 
-        [HttpPost("/Administration/Tyres/Create")]
+        [HttpPost("/Administration/Tyre/Create")]
         public async Task <IActionResult> Create(TyreCreateInputModel tyreCreateInputModel)
         {
             if (!this.ModelState.IsValid)
@@ -48,21 +48,21 @@ namespace SNT.Areas.Administration.Controllers
             return this.Redirect("/");
         }
 
-        [HttpPost]
-        [Route("/Home/Tyres")]
-        public IActionResult Delete(string id)
-        {
-            this.tyreService.MakeTyreOutOfStock(id);
+        //[HttpPost]
+        //[Route("/Home/Tyres")]
+        //public IActionResult Delete(string id)
+        //{
+        //    this.tyreService.MakeTyreOutOfStock(id);
 
-            return Redirect("/");
-        }
+        //    return Redirect("/");
+        //}
 
-        [HttpGet]
-        public IActionResult Edit(string id)
-        {
+        //[HttpGet]
+        //public IActionResult Edit(string id)
+        //{
 
-            return View();
-        }
+        //    return View();
+        //}
 
 
     }

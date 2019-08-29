@@ -13,7 +13,7 @@ namespace SNT.Controllers
 {
     public class MotorOilInputModel : IMapFrom<MotorOilReviewViewModel>
     {
-        public string TyreId { get; set; }
+        public string MotorOilId { get; set; }
 
     }
     public class MotorOilController : Controller
@@ -40,11 +40,11 @@ namespace SNT.Controllers
 
 
         [HttpPost(Name = "AddToBag")]
-        public async Task<IActionResult> AddToBag(MotorOilInputModel tyreBagInputModel)
+        public async Task<IActionResult> AddToBag(MotorOilInputModel MotorOilInputModel)
         {
             string userId = this.userManager.GetUserId(this.HttpContext.User);
 
-            await this.shoppingbagService.AddTyreToShoppingBag(tyreBagInputModel.TyreId, userId);
+            await this.shoppingbagService.AddMotorOilToShoppingBag(MotorOilInputModel.MotorOilId, userId);
 
             return this.Redirect("/");
         }
