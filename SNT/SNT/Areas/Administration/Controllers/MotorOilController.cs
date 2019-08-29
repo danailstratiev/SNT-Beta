@@ -49,13 +49,7 @@ namespace SNT.Areas.Administration.Controllers
             return this.Redirect("/");
         }
 
-        [HttpGet(Name = "Review")]
-        public IActionResult Review(string id)
-        {
-            MotorOilReviewViewModel motorOilReviewViewModel = this.motorOilService.GetMotorOilById(id).To<MotorOilReviewViewModel>();
-
-            return View(motorOilReviewViewModel);
-        }
+        
 
         public IActionResult Index()
         {
