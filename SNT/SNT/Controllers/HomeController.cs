@@ -17,10 +17,12 @@ namespace SNT.Controllers
         private IWheelRimService wheelRimService;
         private IMotorOilService motorOilService;
 
-        public HomeController(ITyreService tyreService, IWheelRimService wheelRimService)
+        public HomeController(ITyreService tyreService, IWheelRimService wheelRimService,
+            IMotorOilService motorOilService)
         {
             this.tyreService = tyreService;
             this.wheelRimService = wheelRimService;
+            this.motorOilService = motorOilService;
         }
 
         public IActionResult Index()
@@ -101,15 +103,15 @@ namespace SNT.Controllers
                     Id = motorOil.Id,
                     Model = motorOil.Model,
                     Brand = motorOil.Brand,
-                    Viscosity = motorOil.Viscosity,
-                    Status = motorOil.Status,
-                    Picture = motorOil.Picture,
                     Price = motorOil.Price,
+                    Viscosity = motorOil.Viscosity,
                     Volume = motorOil.Volume,
                     Type = motorOil.Type,
+                    Picture = motorOil.Picture,
+                    Status = motorOil.Status,
                     Description = motorOil.Description
                 })
-                .ToListAsync();
+                .ToListAsync<MotorOilHomeViewModel>();
 
             return View(motorOils);
         }

@@ -20,7 +20,7 @@ namespace SNT.Services
 
         public async Task<bool> Create(MotorOilServiceModel motorOilServiceModel)
         {
-            MotorOil  motorOil = AutoMapper.Mapper.Map<MotorOil>(motorOilServiceModel);
+            MotorOil motorOil = AutoMapper.Mapper.Map<MotorOil>(motorOilServiceModel);
 
             this.context.MotorOils.Add(motorOil);
             int result = await context.SaveChangesAsync();
@@ -30,6 +30,11 @@ namespace SNT.Services
         public IQueryable<MotorOilServiceModel> GetAllAvailableOils()
         {
             return this.context.MotorOils.To<MotorOilServiceModel>();
+        }
+
+        public MotorOilServiceModel GetMotorOilById(string id)
+        {
+            return this.context.MotorOils.To<MotorOilServiceModel>().SingleOrDefault(x => x.Id == id);
         }
     }
 }

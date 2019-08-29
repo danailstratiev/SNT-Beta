@@ -12,5 +12,6 @@ namespace SNT.Services
 
         IQueryable<MotorOilServiceModel> GetAllAvailableOils();
 
+        MotorOilServiceModel GetMotorOilById(string id);
     }
 }
