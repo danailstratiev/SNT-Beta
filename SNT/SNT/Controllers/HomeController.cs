@@ -80,7 +80,7 @@ namespace SNT.Controllers
         [HttpGet]
         public async Task<IActionResult> WheelRims()
         {
-            List<WheelRimHomeViewModel> wheelRims = await this.wheelRimService.GetAllWheelRims().
+            List<WheelRimHomeViewModel> wheelRims = await this.wheelRimService.GetAllAvailableWheelRims().
                 Select(wheelRim => new WheelRimHomeViewModel
                 {
                     Id = wheelRim.Id,

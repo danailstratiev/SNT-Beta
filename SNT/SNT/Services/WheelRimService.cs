@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SNT.Data;
 using SNT.Models;
 using SNT.ServiceModels;
@@ -43,9 +44,22 @@ namespace SNT.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<WheelRim> GetAllAvailableWheelRims()
+        public IQueryable<WheelRimServiceModel> GetAllAvailableWheelRims()
         {
-            throw new NotImplementedException();
+            return this.context.WheelRims.Where(x => x.Status == Models.Enums.AvailabilityStatus.InStock).To<WheelRimServiceModel>();
+        }
+
+        public async Task<bool> EditWheelRim (WheelRimServiceModel wheelRimServiceModel)
+        {
+            var wheelRimFromDb = await this.context.WheelRims.SingleOrDefaultAsync(p => p.Id == wheelRimServiceModel.Id);
+
+            AutoMapper.Mapper.Map(wheelRimServiceModel, wheelRimFromDb);
+
+            this.context.WheelRims.Update(wheelRimFromDb);
+
+            var result = await this.context.SaveChangesAsync();
+
+            return result > 0;
         }
 
         public IQueryable<WheelRim> GetAllUnavailableWheelRims()

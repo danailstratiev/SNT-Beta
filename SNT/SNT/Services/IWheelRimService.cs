@@ -11,9 +11,13 @@ namespace SNT.Services
     {
         Task<bool> Create(WheelRimServiceModel wheelRimServiceModel);
 
-        Task<WheelRim> EditWheelRim(WheelRim wheelRim);
+        Task<bool> EditWheelRim(WheelRimServiceModel wheelRimServiceModel);
 
         WheelRimServiceModel GetWheelRimById(string id);
+
+        IQueryable<WheelRimServiceModel> GetAllAvailableWheelRims();
+
+        IQueryable<WheelRimServiceModel> GetAllWheelRims();
 
         IQueryable<WheelRim> GetAllWheelRimsByPriceAscending();
 
@@ -21,9 +25,7 @@ namespace SNT.Services
 
         IQueryable<WheelRim> GetAllWheelRimsByBrand();
 
-        IQueryable<WheelRim> GetAllAvailableWheelRims();
 
-        IQueryable<WheelRimServiceModel> GetAllWheelRims();
 
         IQueryable<WheelRim> GetAllWheelRimsByPCD();
 
