@@ -10,7 +10,11 @@ namespace SNT.Services
     {
         Task<bool> Create(MotorOilServiceModel motorOilServiceModel);
 
+        Task<bool> EditMotorOil(MotorOilServiceModel motorOilServiceModel);
+
         IQueryable<MotorOilServiceModel> GetAllAvailableOils();
+
+        IQueryable<MotorOilServiceModel> GetAllOils();
 
         MotorOilServiceModel GetMotorOilById(string id);
     }

@@ -1,4 +1,5 @@
-﻿using SNT.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SNT.Data;
 using SNT.Models;
 using SNT.ServiceModels;
 using SNT.Services.Mapping;
@@ -29,12 +30,30 @@ namespace SNT.Services
 
         public IQueryable<MotorOilServiceModel> GetAllAvailableOils()
         {
+            return this.context.MotorOils.Where(x => x.Status == Models.Enums.AvailabilityStatus.InStock).To<MotorOilServiceModel>();
+        }
+
+        public IQueryable<MotorOilServiceModel> GetAllOils()
+        {
             return this.context.MotorOils.To<MotorOilServiceModel>();
         }
 
         public MotorOilServiceModel GetMotorOilById(string id)
         {
             return this.context.MotorOils.To<MotorOilServiceModel>().SingleOrDefault(x => x.Id == id);
+        }
+
+        public async Task<bool> EditMotorOil(MotorOilServiceModel motorOilServiceModel)
+        {
+            var motorOilFromDb = await this.context.MotorOils.SingleOrDefaultAsync(p => p.Id == motorOilServiceModel.Id);
+
+            AutoMapper.Mapper.Map(motorOilServiceModel, motorOilFromDb);
+
+            this.context.MotorOils.Update(motorOilFromDb);
+
+            var result = await this.context.SaveChangesAsync();
+
+            return result > 0;
         }
     }
 }
