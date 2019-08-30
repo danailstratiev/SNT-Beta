@@ -9,6 +9,7 @@ using SNT.Models;
 using SNT.ServiceModels;
 using SNT.Services;
 using SNT.Services.Mapping;
+using SNT.ViewModels;
 using SNT.ViewModels.Edit;
 using SNT.ViewModels.Home;
 
@@ -34,10 +35,27 @@ namespace SNT.Areas.Administration.Controllers
         [HttpGet("/Administration/Tyre/Edit")]
         public async Task<IActionResult> Edit(string id)
         {
-            TyreEditViewModel tyreReviewViewModel = this.tyreService.GetTyreById(id).To<TyreEditViewModel>();
+            var tyreServiceModel = this.tyreService.GetTyreById(id);
+
+            return View(tyreServiceModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(TyreServiceModel tyreServiceModel)
+        {
+            await this.tyreService.EditTyre(tyreServiceModel);
+
+            return this.Redirect("/Administration/Tyre/AllTyres");
+        }
+
+        [HttpGet(Name = "Review")]
+        public IActionResult Review(string id)
+        {
+            TyreReviewViewModel tyreReviewViewModel = this.tyreService.GetTyreById(id).To<TyreReviewViewModel>();
 
             return View(tyreReviewViewModel);
         }
+
 
         [HttpPost("/Administration/Tyre/Create")]
         public async Task <IActionResult> Create(TyreCreateInputModel tyreCreateInputModel)

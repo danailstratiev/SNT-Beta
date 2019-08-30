@@ -84,23 +84,12 @@
     </dl>
 </div>
 
-
-
-@if (this.User.Identity.IsAuthenticated)
-{
-    <form asp-action="AddToBag" asp-controller="Tyre" method="POST">
-        <input type="hidden" value="@Model.Id" name="tyreId" />
-        <input type="submit" value="Add" class="btn btn-primary" />
-    </form>
-}
+<form asp-action="Edit" asp-controller="Tyre" method="GET">
+    <input type="hidden" value="@Model.Id" name="id" />
+    <input type="submit" value="Edit" class="btn btn-primary" />
+</form>
 
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 </div>
-
-@*<script>
-        $('#addtobag-button').click(function () {
-            $('#addtobag-form').submit();
-        });
-    </script>*@

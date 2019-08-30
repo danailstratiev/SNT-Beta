@@ -99,11 +99,11 @@ namespace SNT.Services
             return result > 0;
         }
 
-        public async Task<bool> EditTyre (TyreEditViewModel tyre)
+        public async Task<bool> EditTyre (TyreServiceModel tyreServiceModel)
         {
-            var tyreFromDb = await this.context.Tyres.SingleOrDefaultAsync(p => p.Id == tyre.Id);
+            var tyreFromDb = await this.context.Tyres.SingleOrDefaultAsync(p => p.Id == tyreServiceModel.Id);
 
-            AutoMapper.Mapper.Map(tyre, tyreFromDb);
+            AutoMapper.Mapper.Map(tyreServiceModel, tyreFromDb);
 
             this.context.Tyres.Update(tyreFromDb);
 

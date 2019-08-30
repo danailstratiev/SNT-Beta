@@ -11,7 +11,7 @@ namespace SNT.Services
     {
         Task<bool> Create(TyreServiceModel tyreServiceModel);
 
-        Task<TyreServiceModel> EditTyre(Tyre tyre);
+        Task<bool> EditTyre(TyreServiceModel tyreServiceModel);
 
        TyreServiceModel GetTyreById(string id);
 
