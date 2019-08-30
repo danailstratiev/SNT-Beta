@@ -27,10 +27,8 @@
             </form>
             <p></p>
             <form id="quantity-form" action="RemoveTyre" controller="ShoppingBag" method="POST">
-                <label asp-for="@tyre.Quantity" class="control-label"></label>
-                <input asp-for="@tyre.Quantity" class="form-control" name="quantity" />
                 <input type="hidden" value="@tyre.Id" name="bagTyreId" />
-                <input type="submit" value="Update Quantity" class="btn btn-primary" />
+                <input type="submit" value="Remove Tyre" class="btn btn-primary" />
             </form>
         }
     </div>
@@ -49,6 +47,11 @@
                 <input type="hidden" value="@wheelRim.Id" name="bagWheelRimId" />
                 <input type="submit" value="Update Quantity" class="btn btn-primary" />
             </form>
+            <p></p>
+            <form id="quantity-form" action="RemoveWheelRim" controller="ShoppingBag" method="POST">
+                <input type="hidden" value="@wheelRim.Id" name="bagWheelRimId" />
+                <input type="submit" value="Remove WheelRim" class="btn btn-primary" />
+            </form>
         }
     </div>
     <div class="col-md-4 justify-content-center">
@@ -65,6 +68,11 @@
                 <input asp-for="@motorOil.Quantity" class="form-control" name="quantity" />
                 <input type="hidden" value="@motorOil.Id" name="motorOilId" />
                 <input type="submit" value="Update Quantity" class="btn btn-primary" />
+            </form>
+
+            <form id="quantity-form" action="RemoveMotorOil" controller="ShoppingBag" method="POST">
+                <input type="hidden" value="@motorOil.Id" name="bagMotorOilId" />
+                <input type="submit" value="Remove MotorOil" class="btn btn-primary" />
             </form>
         }
     </div>

@@ -23,5 +23,11 @@ namespace SNT.Services
         void UpdateShoppingBagWheelRimQuantity(string bagWheelRimId, int quantity);
 
         void UpdateShoppingBagMotorOilQuantity(string motorOilId, int quantity);
+
+        void RemoveTyreFromShoppingBag(string bagTyreId, string userId);
+
+        void RemoveWheelRimFromShoppingBag(string bagWheelRimId, string userId);
+
+        void RemoveMotorOilFromShoppingBag(string bagMotorOilId, string userId);
     }
 }

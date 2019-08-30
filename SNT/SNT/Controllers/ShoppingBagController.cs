@@ -66,5 +66,37 @@ namespace SNT.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult RemoveTyre(string bagTyreId)
+        {
+            string userId = this.userManager.GetUserId(this.HttpContext.User);
+
+            this.shoppingbagService.RemoveTyreFromShoppingBag(bagTyreId, userId);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveWheelRim(string bagWheelRimId)
+        {
+            string userId = this.userManager.GetUserId(this.HttpContext.User);
+
+            this.shoppingbagService.RemoveWheelRimFromShoppingBag(bagWheelRimId, userId);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveMotorOil(string bagMotorOilId)
+        {
+            string userId = this.userManager.GetUserId(this.HttpContext.User);
+
+            this.shoppingbagService.RemoveMotorOilFromShoppingBag(bagMotorOilId, userId);
+
+            return RedirectToAction("Index");
+        }
+
+        
     }
 }

@@ -160,7 +160,33 @@ namespace SNT.Services
             return new ShoppingBagHomeViewModel(bagTyres, bagWheelRims, bagMotorOils, user.Id);
         }
 
-        //public async Task<bool> RemoveTyreFromShoppingBag(string tyreId, string userId)
+        public void RemoveTyreFromShoppingBag(string bagTyreId, string userId)
+        {
+            var bagTyre = this.context.ShoppingBagTyres.FirstOrDefault(x => x.Id == bagTyreId && x.UserId == userId);
+
+            this.context.ShoppingBagTyres.Remove(bagTyre);
+
+            this.context.SaveChanges();
+        }
+
+        public void RemoveWheelRimFromShoppingBag(string bagWheelRimId, string userId)
+        {
+            var bagWheelRim = this.context.ShoppingBagWheelRims.FirstOrDefault(x => x.Id == bagWheelRimId && x.UserId == userId);
+
+            this.context.ShoppingBagWheelRims.Remove(bagWheelRim);
+
+            this.context.SaveChanges();
+
+        }
+
+        public void RemoveMotorOilFromShoppingBag(string bagMotorOilId, string userId)
+        {
+            var bagMotorOil = this.context.ShoppingBagMotorOils.FirstOrDefault(x => x.Id == bagMotorOilId && x.UserId == userId);
+
+            this.context.ShoppingBagMotorOils.Remove(bagMotorOil);
+
+             this.context.SaveChanges();
+        }
 
         public async Task<bool> RemoveAllShoppingBagProducts(string userId)
         {
