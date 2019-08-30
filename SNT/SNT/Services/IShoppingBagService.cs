@@ -16,7 +16,8 @@ namespace SNT.Services
 
         ShoppingBagHomeViewModel GetAllCartProducts(string userId);
 
-        Task<bool> RemoveAllShoppingBagProducts(string userId);
+        void RemoveAllShoppingBagProducts(string userId);
+
 
         void UpdateShoppingBagTyreQuantity(string bagTyreId, int quantity);
 

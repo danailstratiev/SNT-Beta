@@ -78,9 +78,11 @@
     </div>
 </div>
 <h2 class="text-primary" id="total-price">Total: @Model.Sum().ToString("F2")</h2>
-
-
-
+<p></p>
+<form id="quantity-form" action="ClearShoppingBag" controller="ShoppingBag" method="POST">
+    <input type="submit" value="Clear Bag" class="btn btn-primary" />
+</form>
+<p></p>
 <p><a href="/Order/Create">Proceed to checkout</a></p>
 
 

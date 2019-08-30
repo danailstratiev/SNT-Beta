@@ -97,6 +97,16 @@ namespace SNT.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public IActionResult ClearShoppingBag()
+        {
+            string userId = this.userManager.GetUserId(this.HttpContext.User);
+
+            this.shoppingbagService.RemoveAllShoppingBagProducts(userId);
+
+            return RedirectToAction("Index");
+        }
+
         
     }
 }

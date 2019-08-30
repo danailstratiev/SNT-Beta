@@ -188,22 +188,19 @@ namespace SNT.Services
              this.context.SaveChanges();
         }
 
-        public async Task<bool> RemoveAllShoppingBagProducts(string userId)
+        public void RemoveAllShoppingBagProducts(string userId)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Id == userId);
 
-            if (user == null)
-            {
-                return false;
-            }
+            var bagTyres = this.context.ShoppingBagTyres.Where(x => x.UserId == userId);
+            var bagWheelRims = this.context.ShoppingBagWheelRims.Where(x => x.UserId == userId);
+            var bagMotorOils = this.context.ShoppingBagMotorOils.Where(x => x.UserId == userId);
 
-            var products = this.context.ShoppingBagTyres.Where(x => x.UserId == userId);
+            this.context.ShoppingBagTyres.RemoveRange(bagTyres);
+            this.context.ShoppingBagWheelRims.RemoveRange(bagWheelRims);
+            this.context.ShoppingBagMotorOils.RemoveRange(bagMotorOils);
 
-            this.context.ShoppingBagTyres.RemoveRange(products);
-
-            var result = await this.context.SaveChangesAsync();
-
-            return result > 0;
+          this.context.SaveChanges();
         }
 
         public void UpdateShoppingBagTyreQuantity (string bagTyreId,int quantity)
