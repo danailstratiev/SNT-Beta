@@ -25,6 +25,13 @@
                 <input type="hidden" value="@tyre.Id" name="bagTyreId" />
                 <input type="submit" value="Update Quantity" class="btn btn-primary" />
             </form>
+            <p></p>
+            <form id="quantity-form" action="RemoveTyre" controller="ShoppingBag" method="POST">
+                <label asp-for="@tyre.Quantity" class="control-label"></label>
+                <input asp-for="@tyre.Quantity" class="form-control" name="quantity" />
+                <input type="hidden" value="@tyre.Id" name="bagTyreId" />
+                <input type="submit" value="Update Quantity" class="btn btn-primary" />
+            </form>
         }
     </div>
     <div class="col-md-4 justify-content-center">
