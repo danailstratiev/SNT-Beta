@@ -99,7 +99,7 @@ namespace SNT.Services
             return result > 0;
         }
 
-        public async Task<bool> EditTyre (EditTyreViewModel tyre)
+        public async Task<bool> EditTyre (TyreEditViewModel tyre)
         {
             var tyreFromDb = await this.context.Tyres.SingleOrDefaultAsync(p => p.Id == tyre.Id);
 

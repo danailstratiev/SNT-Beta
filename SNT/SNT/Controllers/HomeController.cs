@@ -35,7 +35,14 @@ namespace SNT.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult About()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Contacts()
         {
             return View();
         }
@@ -49,7 +56,7 @@ namespace SNT.Controllers
         [HttpGet]
         public async Task<IActionResult> Tyres()
         {
-            List<TyreHomeViewModel> tyres = await this.tyreService.GetAllTyres()
+            List<TyreHomeViewModel> tyres = await this.tyreService.GetAllAvailableTyres()
                 .Select(tyre => new TyreHomeViewModel
                 {
                     Id = tyre.Id,

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SNT.ViewModels.Edit
 {
-    public class EditTyreViewModel : IMapTo<TyreServiceModel>, IHaveCustomMappings
+    public class TyreEditViewModel : IMapTo<TyreServiceModel>, IHaveCustomMappings
     {
         public string Id { get; set; }
 
@@ -38,7 +38,7 @@ namespace SNT.ViewModels.Edit
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration
-              .CreateMap<EditTyreViewModel, TyreServiceModel>();
+              .CreateMap<TyreEditViewModel, TyreServiceModel>();
         }
     }
 }
