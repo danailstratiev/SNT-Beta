@@ -103,14 +103,14 @@ ul li {
     background-image: url('https://kw-oil.com/wp-content/uploads/sites/2/2018/09/mobil-1-synthetic-mobil-super-motor-oil-product-bottles.jpg')
 }
 
-main {
+.middletyre main {
     flex: 0 0 70%;
     background: #fff;
     margin-top: 2rem;
     width: 70%;
 }
 
-aside {
+.middletyre aside {
     flex: 0 0 28%;
     background: #fff;
     margin-top: 2rem;
