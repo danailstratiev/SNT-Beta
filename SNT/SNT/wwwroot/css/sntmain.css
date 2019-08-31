@@ -257,3 +257,21 @@ main {
     background-color: crimson;
     border-color: #ff001f;
 }
+
+.wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 3rem auto;
+}
+
+.recipe {
+    background: url(../Exam\ Preparations/image1.png);
+    padding: 2.5rem 1.5rem;
+    flex: 0 0 50%;
+}
+
+.aboutimage {
+    background: url(/images/68898289_356738878605103_5688401621948563456_n.png) no-repeat center center;
+    background-size: cover;
+    flex: 0 0 50%;
+}
