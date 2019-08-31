@@ -44,47 +44,14 @@ namespace SNT.Services
         public IQueryable<TyreServiceModel> GetAllSummerTyres()
         {
             throw new NotImplementedException();
-        }
+        }      
 
-        public IQueryable<TyreServiceModel> GetAllTyresByBrand()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<TyreServiceModel> GetAllTyresByDiameter()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<TyreServiceModel> GetAllTyresByPriceAscending()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<TyreServiceModel> GetAllTyresByPriceDescending()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<TyreServiceModel> GetAllTyresByRatio()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<TyreServiceModel> GetAllTyresByWidth()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IQueryable<TyreServiceModel> GetAllTyres()
         {
             return this.context.Tyres.To<TyreServiceModel>();
         }
-
-        public IQueryable<TyreServiceModel> GetAllWinterTyres()
-        {
-            throw new NotImplementedException();
-        }
+               
 
         public async Task<bool> MakeTyreOutOfStock(string id)
         {
