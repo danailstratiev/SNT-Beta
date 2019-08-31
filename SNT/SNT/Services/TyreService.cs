@@ -30,10 +30,10 @@ namespace SNT.Services
             return result > 0;
         }
 
-        public Task<TyreServiceModel> EditTyre(Tyre tyre)
-        {
-            throw new NotImplementedException();
-        }
+        //public Task<TyreServiceModel> EditTyre(Tyre tyre)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public IQueryable<TyreServiceModel> GetAllAvailableTyres()
         {
