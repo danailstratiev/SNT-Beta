@@ -66,7 +66,11 @@
         <aside class="tyreaside">
 
             <div class="col justify-content-between">
-                <h4>Tyres</h4>
+                @if (Model.Tyres.Any())
+                {
+                    <h4>Tyres</h4>
+
+                }
                 <div class="col-md-4">
                     @foreach (var tyre in Model.Tyres)
                     {
@@ -76,7 +80,12 @@
                         <p>Quantity: @tyre.Quantity</p>
                     }
                 </div>
-                <h4>WheelRims</h4>
+                @if (Model.WheelRims.Any())
+                {
+
+                    <h4>WheelRims</h4>
+
+                }
                 <div class="col-md-4">
                     @foreach (var wheelRim in Model.WheelRims)
                     {
@@ -86,7 +95,12 @@
                         <p>Quantity: @wheelRim.Quantity</p>
                     }
                 </div>
-                <h4>Motor Oils</h4>
+                @if (Model.MotorOils.Any())
+                {
+
+                    <h4>Motor Oils</h4>
+
+                }
                 <div class="col-md-4">
                     @foreach (var motorOil in Model.MotorOils)
                     {

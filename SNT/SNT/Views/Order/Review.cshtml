@@ -6,97 +6,111 @@
 }
 
 
-    <div class="order">
-        <h1>Review</h1>
-        <hr />
-        <div class="middletyre">
-            <main class="tyremain">
-                <dl class="col justify-content-center">
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model =>model.Id)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.Id)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.DateOfCreation)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.DateOfCreation)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.DeliveryDate)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.DeliveryDate)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.DeliveryAddress)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.DeliveryAddress)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.ClientName)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ClientName)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.OrderStage)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.OrderStage)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Comment)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.Comment)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Sum)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.Sum)
-                    </dd>
-                </dl>
-            </main>
-            <aside class="tyreaside">
+<div class="order">
+    <h1>Review</h1>
+    <hr />
+    <div class="middletyre">
+        <main class="tyremain">
+            <dl class="col justify-content-center">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Id)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DateOfCreation)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DateOfCreation)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DeliveryDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DeliveryDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DeliveryAddress)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DeliveryAddress)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ClientName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ClientName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.OrderStage)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.OrderStage)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Comment)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Comment)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Sum)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Sum)
+                </dd>
+            </dl>
+        </main>
+        <aside class="tyreaside">
 
-        <div class="col justify-content-between">
-            <h4>Tyres</h4>
-            <div class="col-md-4">
-                @foreach (var tyre in Model.Tyres)
+            <div class="col justify-content-between">
+                @if (Model.Tyres.Any())
                 {
-                    <p>Model: @tyre.Model</p>
-                    <p>Brand: @tyre.Brand</p>
-                    <p>Price: @tyre.Price</p>
-                    <p>Quantity: @tyre.Quantity</p>
+                    <h4>Tyres</h4>
+
                 }
-            </div>
-            <h4>WheelRims</h4>
-            <div class="col-md-4">
-                @foreach (var wheelRim in Model.WheelRims)
+                <div class="col-md-4">
+                    @foreach (var tyre in Model.Tyres)
+                    {
+                        <p>Model: @tyre.Model</p>
+                        <p>Brand: @tyre.Brand</p>
+                        <p>Price: @tyre.Price</p>
+                        <p>Quantity: @tyre.Quantity</p>
+                    }
+                </div>
+                @if (Model.WheelRims.Any())
                 {
-                    <p>Model: @wheelRim.Brand</p>
-                    <p>Brand: @wheelRim.Model</p>
-                    <p>Price: @wheelRim.Price</p>
-                    <p>Quantity: @wheelRim.Quantity</p>
+
+                    <h4>WheelRims</h4>
+
                 }
-            </div>
-            <h4>Motor Oils</h4>
-            <div class="col-md-4">
-                @foreach (var motorOil in Model.MotorOils)
+                <div class="col-md-4">
+                    @foreach (var wheelRim in Model.WheelRims)
+                    {
+                        <p>Model: @wheelRim.Brand</p>
+                        <p>Brand: @wheelRim.Model</p>
+                        <p>Price: @wheelRim.Price</p>
+                        <p>Quantity: @wheelRim.Quantity</p>
+                    }
+                </div>
+                @if (Model.MotorOils.Any())
                 {
-                    <p>Model: @motorOil.Model</p>
-                    <p>Brand: @motorOil.Brand</p>
-                    <p>Price: @motorOil.Price</p>
-                    <p>Quantity: @motorOil.Quantity</p>
+
+                    <h4>Motor Oils</h4>
+
                 }
+                <div class="col-md-4">
+                    @foreach (var motorOil in Model.MotorOils)
+                    {
+                        <p>Model: @motorOil.Model</p>
+                        <p>Brand: @motorOil.Brand</p>
+                        <p>Price: @motorOil.Price</p>
+                        <p>Quantity: @motorOil.Quantity</p>
+                    }
+                </div>
             </div>
-        </div>
-            </aside>
-        </div>
+        </aside>
     </div>
+</div>
 
