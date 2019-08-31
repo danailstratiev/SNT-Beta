@@ -6,91 +6,89 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Review</h1>
 
-<div class="product">    
+<div class="product">
+    <h1>Review</h1>
     <hr />
-    <div>
-        <dl class="row justify-content-center">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Id)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Id)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Model)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Model)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Brand)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Brand)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Status)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Status)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Price)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Price)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Picture)
-            </dt>
-            <dd class="col-sm-10">
-                <img class="img-thumbnail product-image" src="@Model.Picture" alt="...">
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PCD)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PCD)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CentralLukeDiameter)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CentralLukeDiameter)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Offset)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Offset)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Material)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Material)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.YearOfProduction)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.YearOfProduction)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-        </dl>
-    </div>
+    <dl class="row justify-content-center">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Picture)
+        </dt>
+        <dd class="col-sm-10">
+            <img class="img-thumbnail product-image" src="@Model.Picture" alt="...">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PCD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PCD)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CentralLukeDiameter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CentralLukeDiameter)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Offset)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Offset)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Material)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Material)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YearOfProduction)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YearOfProduction)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+    <form asp-action="Edit" asp-controller="WheelRim" method="GET">
+        <input type="hidden" value="@Model.Id" name="id" />
+        <input type="submit" value="Edit" class="btn btn-primary" />
+    </form>
 </div>
 
-<form asp-action="Edit" asp-controller="WheelRim" method="GET">
-    <input type="hidden" value="@Model.Id" name="id" />
-    <input type="submit" value="Edit" class="btn btn-primary" />
-</form>
 
 

@@ -6,9 +6,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Review</h1>
 
 <div class="product">
+    <h1>Review</h1>
     <hr />
     <dl class="row justify-content-center">
         <dt class="col-sm-2">
@@ -72,13 +72,13 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
+    <form asp-action="Edit" asp-controller="MotorOil" method="GET">
+        <input type="hidden" value="@Model.Id" name="id" />
+        <input type="submit" value="Edit" class="btn btn-primary" />
+    </form>
 </div>
 
 
 
-<form asp-action="Edit" asp-controller="MotorOil" method="GET">
-    <input type="hidden" value="@Model.Id" name="id" />
-    <input type="submit" value="Edit" class="btn btn-primary" />
-</form>
 
 

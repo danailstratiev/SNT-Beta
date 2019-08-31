@@ -6,10 +6,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Review</h1>
 
 <div class="product">
-    
+    <h1>Review</h1>
     <hr />
     <dl class="row justify-content-center">
         <dt class="col-sm-2">
@@ -82,17 +81,17 @@
 
         </dd>
     </dl>
+
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <form asp-action="AddToBag" asp-controller="Tyre" method="POST">
+            <input type="hidden" value="@Model.Id" name="tyreId" />
+            <input type="submit" value="Add" class="btn btn-primary" />
+        </form>
+    }
 </div>
 
 
-
-@if (this.User.Identity.IsAuthenticated)
-{
-    <form asp-action="AddToBag" asp-controller="Tyre" method="POST">
-        <input type="hidden" value="@Model.Id" name="tyreId" />
-        <input type="submit" value="Add" class="btn btn-primary" />
-    </form>
-}
 
 
 
