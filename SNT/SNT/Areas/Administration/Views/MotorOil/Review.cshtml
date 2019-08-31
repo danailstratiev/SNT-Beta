@@ -8,8 +8,7 @@
 
 <h1>Review</h1>
 
-<div>
-    <h4>MotorOilReviewViewModel</h4>
+<div class="product">
     <hr />
     <dl class="row justify-content-center">
         <dt class="col-sm-2">
@@ -73,8 +72,9 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
-
 </div>
+
+
 
 <form asp-action="Edit" asp-controller="MotorOil" method="GET">
     <input type="hidden" value="@Model.Id" name="id" />
