@@ -243,12 +243,12 @@ main {
 }
 
 .card-content {
-    flex: 0 0 26%;
+    flex: 0 0 36%;
     flex-wrap: wrap;
     background: #fff;
     border-radius: 0.5rem;
     padding: 1rem;
-    margin: 19.8rem 33.5rem;
+    margin: 6rem 33.5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
