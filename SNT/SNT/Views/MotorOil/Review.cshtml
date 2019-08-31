@@ -67,11 +67,14 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
-    <form asp-action="AddToBag" asp-controller="MotorOil" method="POST">
-        <input type="hidden" value="@Model.Id" name="motorOilId" />
-        <input type="submit" value="Add" class="btn btn-primary" />
-    </form>
 
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <form asp-action="AddToBag" asp-controller="MotorOil" method="POST">
+            <input type="hidden" value="@Model.Id" name="motorOilId" />
+            <input type="submit" value="Add" class="btn btn-primary" />
+        </form>
+    }
 </div>
 
 
