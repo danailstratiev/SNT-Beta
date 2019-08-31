@@ -17,21 +17,21 @@ namespace SNT.Controllers
             this.receiptService = receiptService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
-        [HttpGet("/Receipt/Details")]
-        public async Task<IActionResult> Details(string orderId)
-        {
-            string userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        //[HttpGet("/Receipt/Details")]
+        //public async Task<IActionResult> Details(string orderId)
+        //{
+        //    string userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            await this.receiptService.GenerateReceipt(userId);
+        //    await this.receiptService.GenerateReceipt(userId);
 
-            var receiptDetailsViewModel = this.receiptService.GetReceiptDetails(orderId);
+        //    var receiptDetailsViewModel = this.receiptService.GetReceiptDetails(orderId);
 
-            return View(receiptDetailsViewModel);
-        }
+        //    return View(receiptDetailsViewModel);
+        //}
     }
 }

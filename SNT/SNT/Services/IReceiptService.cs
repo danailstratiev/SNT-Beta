@@ -8,9 +8,9 @@ namespace SNT.Services
 {
     public interface IReceiptService
     {
-       Task<bool> GenerateReceipt(string userId);
+       //Task<bool> GenerateReceipt(string userId);
 
-        ReceiptDetailsViewModel GetReceiptDetails(string orderId);
+       // ReceiptDetailsViewModel GetReceiptDetails(string orderId);
 
     }
 }
