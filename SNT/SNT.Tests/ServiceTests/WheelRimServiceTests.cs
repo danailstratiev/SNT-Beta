@@ -111,7 +111,7 @@ namespace SNT.Tests.ServiceTests
         [Fact]
         public async Task GetWheelRimById_WithExistentId_ShouldReturnCorrectResult()
         {
-            string errorMessagePrefix = "WheelRimService GetWheelRimByI() method does not work properly.";
+            string errorMessagePrefix = "WheelRimService GetWheelRimById() method does not work properly.";
 
             var context = SntDbContextInMemoryFactory.InitializeContext();
             await SeedData(context);
@@ -136,7 +136,7 @@ namespace SNT.Tests.ServiceTests
         [Fact]
         public async Task GetWheelRimById_WithNonExistentId_ShouldReturnNull()
         {
-            string errorMessagePrefix = "WheelRimService GetWheelRimByI() method does not work properly.";
+            string errorMessagePrefix = "WheelRimService GetWheelRimById() method does not work properly.";
 
             var context = SntDbContextInMemoryFactory.InitializeContext();
             await SeedData(context);
@@ -149,7 +149,7 @@ namespace SNT.Tests.ServiceTests
 
         public async Task Create_WithCorrectData_ShouldSuccessfullyCreate()
         {
-            string errorMessagePrefix = "TyreService Create() method does not work properly.";
+            string errorMessagePrefix = "WheelRimService Create() method does not work properly.";
 
             var context = SntDbContextInMemoryFactory.InitializeContext();
             await SeedData(context);
@@ -210,7 +210,7 @@ namespace SNT.Tests.ServiceTests
 
             await this.wheelRimService.EditWheelRim(expectedData);
 
-            TyreServiceModel actualData = context.Tyres.First().To<TyreServiceModel>();
+            WheelRimServiceModel actualData = context.Tyres.First().To<WheelRimServiceModel>();
 
             Assert.True(actualData.Model == expectedData.Model, errorMessagePrefix + " " + "Model not editted properly.");
             Assert.True(actualData.Price == expectedData.Price, errorMessagePrefix + " " + "Price not editted properly.");
