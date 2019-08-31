@@ -5,6 +5,7 @@ using SNT.ServiceModels;
 using SNT.Services.Mapping;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,10 +15,13 @@ namespace SNT.InputModels
     {
         public string Id { get; set; }
                 
+        [Required]
         public string ClientName { get; set; }
 
-        public string DeliveryAddress { get; set; }              
-               
+        [Required]
+        public string DeliveryAddress { get; set; }
+
+        [Required]
         public string Comment { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
