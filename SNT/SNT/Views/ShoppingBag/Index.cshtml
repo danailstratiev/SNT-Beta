@@ -28,7 +28,7 @@
 
                 <form id="quantity-form" action="EditTyreQuantity" controller="ShoppingBag" method="POST">
                     <label asp-for="@tyre.Quantity" class="control-label"></label>
-                    <input asp-for="@tyre.Quantity" class="form-control" name="quantity" />
+                    <input asp-for="@tyre.Quantity" class="form-control" name="quantity" min="1" max="6" />
                     <input type="hidden" value="@tyre.Id" name="bagTyreId" />
                     <input type="submit" value="Update Quantity" class="btn btn-primary" />
                 </form>
@@ -59,7 +59,7 @@
 
                 <form id="quantity-form" action="EditWheelRimQuantity" controller="ShoppingBag" method="POST">
                     <label asp-for="@wheelRim.Quantity" class="control-label"></label>
-                    <input asp-for="@wheelRim.Quantity" class="form-control" name="quantity" />
+                    <input asp-for="@wheelRim.Quantity" class="form-control" name="quantity" min="1" max="6"/>
                     <input type="hidden" value="@wheelRim.Id" name="bagWheelRimId" />
                     <input type="submit" value="Update Quantity" class="btn btn-primary" />
                 </form>
@@ -90,7 +90,7 @@
 
                 <form id="quantity-form" action="EditMotorOilQuantity" controller="ShoppingBag" method="POST">
                     <label asp-for="@motorOil.Quantity" class="control-label"></label>
-                    <input asp-for="@motorOil.Quantity" class="form-control" name="quantity" />
+                    <input asp-for="@motorOil.Quantity" class="form-control" name="quantity" min="1" max="6"/>
                     <input type="hidden" value="@motorOil.Id" name="motorOilId" />
                     <p></p>
                     <input type="submit" value="Update Quantity" class="btn btn-primary" />
