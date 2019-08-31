@@ -68,13 +68,44 @@ namespace SNT.Tests.ServiceTests
         [Fact]
         public async Task GetAllTyres_WithDummyData_ShouldReturnCorrectResults()
         {
-            string errorMessagePrefix = "TyreService GetAllProducts() method does not work properly.";
+            string errorMessagePrefix = "TyreService GetAllTyress() method does not work properly.";
 
             var context = SntDbContextInMemoryFactory.InitializeContext();
             await SeedData(context);
             this.tyreService = new TyreService(context);
 
             List<TyreServiceModel> actualResults = await this.tyreService.GetAllTyres().ToListAsync();
+            List<TyreServiceModel> expectedResults = GetDummyData().To<TyreServiceModel>().ToList();
+
+            for (int i = 0; i < expectedResults.Count; i++)
+            {
+                var expectedEntry = expectedResults[i];
+                var actualEntry = actualResults[i];
+
+                Assert.True(expectedEntry.Model == actualEntry.Model, errorMessagePrefix + " " + "Model is not returned properly.");
+                Assert.True(expectedEntry.Brand == actualEntry.Brand, errorMessagePrefix + " " + "Brand is not returned properly.");
+                Assert.True(expectedEntry.Type == actualEntry.Type, errorMessagePrefix + " " + "Type is not returned properly.");
+                Assert.True(expectedEntry.Status == actualEntry.Status, errorMessagePrefix + " " + "Status is not returned properly.");
+                Assert.True(expectedEntry.Diameter == actualEntry.Diameter, errorMessagePrefix + " " + "Diameter is not returned properly.");
+                Assert.True(expectedEntry.Ratio == actualEntry.Ratio, errorMessagePrefix + " " + "Ratio is not returned properly.");
+                Assert.True(expectedEntry.Description == actualEntry.Description, errorMessagePrefix + " " + "Description is not returned properly.");
+                Assert.True(expectedEntry.Width == actualEntry.Width, errorMessagePrefix + " " + "Width is not returned properly.");
+                Assert.True(expectedEntry.YearOfProduction == actualEntry.YearOfProduction, errorMessagePrefix + " " + "YearOfProduction is not returned properly.");
+                Assert.True(expectedEntry.Price == actualEntry.Price, errorMessagePrefix + " " + "Price is not returned properly.");
+                Assert.True(expectedEntry.Picture == actualEntry.Picture, errorMessagePrefix + " " + "Picture is not returned properly.");
+            }
+        }
+
+        [Fact]
+        public async Task GetAllAvailableTyres_WithDummyData_ShouldReturnCorrectResults()
+        {
+            string errorMessagePrefix = "TyreService GetAllAvailableTyres() method does not work properly.";
+
+            var context = SntDbContextInMemoryFactory.InitializeContext();
+            await SeedData(context);
+            this.tyreService = new TyreService(context);
+
+            List<TyreServiceModel> actualResults = await this.tyreService.GetAllAvailableTyres().ToListAsync();
             List<TyreServiceModel> expectedResults = GetDummyData().To<TyreServiceModel>().ToList();
 
             for (int i = 0; i < expectedResults.Count; i++)
@@ -105,6 +136,19 @@ namespace SNT.Tests.ServiceTests
             this.tyreService = new TyreService(context);
 
             List<TyreServiceModel> actualResults = await this.tyreService.GetAllTyres().ToListAsync();
+
+            Assert.True(actualResults.Count == 0, errorMessagePrefix);
+        }
+
+        [Fact]
+        public async Task GetAllAvailableTyres_WithZeroData_ShouldReturnEmptyResults()
+        {
+            string errorMessagePrefix = "TyreService GetAllAvailableTyres() method does not work properly.";
+
+            var context = SntDbContextInMemoryFactory.InitializeContext();
+            this.tyreService = new TyreService(context);
+
+            List<TyreServiceModel> actualResults = await this.tyreService.GetAllAvailableTyres().ToListAsync();
 
             Assert.True(actualResults.Count == 0, errorMessagePrefix);
         }
@@ -174,40 +218,13 @@ namespace SNT.Tests.ServiceTests
             bool actualResult = await this.tyreService.Create(testProduct);
             Assert.True(actualResult, errorMessagePrefix);
         }
-
-        [Fact]
-        public async Task Create_WithNonExistentProductType_ShouldThrowArgumentNullException()
-        {
-            string errorMessagePrefix = "TyreService Create() method does not work properly.";
-
-            var context = SntDbContextInMemoryFactory.InitializeContext();
-            await SeedData(context);
-            this.tyreService = new TyreService(context);
-
-
-            TyreServiceModel testProduct = new TyreServiceModel
-            {
-                Model = "Giant Ant",
-                Brand = "Pym Tech",
-                Type = Models.Enums.SeasonType.AllSeasons,
-                Price = 189.59M,
-                YearOfProduction = 2018,
-                Picture = "src/pics/giant/ant",
-                Width = 205,
-                Ratio = 75,
-                Diameter = 18,
-                Status = Models.Enums.AvailabilityStatus.OutOfStock,
-                Description = "Wield the power of Giant Ant!"
-            };
-            
-
-            await Assert.ThrowsAsync<ArgumentNullException>(() => this.tyreService.Create(testProduct));
-        }
+        
+           
 
         [Fact]
         public async Task EditTyre_WithCorrectData_ShouldPassSuccessfully()
         {
-            string errorMessagePrefix = "ProductService Edit() method does not work properly.";
+            string errorMessagePrefix = "TyreService Edit() method does not work properly.";
 
             var context = SntDbContextInMemoryFactory.InitializeContext();
             await SeedData(context);
@@ -223,7 +240,7 @@ namespace SNT.Tests.ServiceTests
         [Fact]
         public async Task EditTyre_WithCorrectData_ShouldEditProductCorrectly()
         {
-            string errorMessagePrefix = "ProductService EditTyre() method does not work properly.";
+            string errorMessagePrefix = "TyreService EditTyre() method does not work properly.";
 
             var context = SntDbContextInMemoryFactory.InitializeContext();
             await SeedData(context);
