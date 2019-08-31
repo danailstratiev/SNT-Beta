@@ -98,7 +98,7 @@ namespace SNT
                typeof(WheelRimViewModel).GetTypeInfo().Assembly,
                typeof(WheelRimServiceModel).GetTypeInfo().Assembly);
 
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -110,7 +110,7 @@ namespace SNT
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-                      
+
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetRequiredService<SntDbContext>())
@@ -136,7 +136,7 @@ namespace SNT
                 }
             }
 
-                    app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

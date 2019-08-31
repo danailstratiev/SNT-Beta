@@ -48,6 +48,10 @@ namespace SNT.Areas.Identity.Pages.Account
             public string Username { get; set; }
 
             [Required]
+            [Display(Name = "PhoneNumber")]
+            public string PhoneNumber { get; set; }
+
+            [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [Display(Name = "Password")]
             public string Password { get; set; }
@@ -79,6 +83,8 @@ namespace SNT.Areas.Identity.Pages.Account
                 {
                     UserName = Input.Username,
                     Email = Input.Email,
+                    PhoneNumber = Input.PhoneNumber
+
                     //ShoppingBag = new ShoppingBag()
                 };
 
