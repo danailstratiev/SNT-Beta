@@ -56,17 +56,24 @@ ul li {
         max-height: 320px;
     }
 
-.shoppingbag {
-    flex: 0 0 40%;
-    flex-wrap: wrap;
+.order {
     width: 900px;
-    margin: auto;
+    margin: 0 12rem;
+    padding: 2rem 0;
+}
+
+.shoppingbag {
+    width: 800px;
+    margin-left: 24rem;
     padding: 2rem 0;
 }
 
 .bagtyre img {
     max-height: 320px;
 }
+
+
+
 
 #item1 {
     background-image: url('http://www.amtyres.co.uk/wp-content/uploads/2016/05/3-tyres-Wigan.png');
@@ -243,4 +250,10 @@ main {
     padding: 1rem;
     margin: 19.8rem 33.5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: crimson;
+    border-color: #ff001f;
 }
