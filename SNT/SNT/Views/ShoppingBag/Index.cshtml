@@ -3,21 +3,28 @@
 
 @{
     ViewData["Title"] = "Index";
-        
+
 }
 
-<h1>ShoppingBag</h1>
 
-<hr />
 <div class="shoppingbag justify-content-center">
-    <div class="col-md-4 justify-content-center">
+    <h1>ShoppingBag</h1>
+    <hr />
+    <div class="bagtyre justify-content-center">
         @foreach (var tyre in Model.Tyres)
         {
-            <p><img class="img-thumbnail product-image" src="@tyre.Picture" alt="..."> </p>
-            <p>@tyre.Model</p>
-            <p>@tyre.Brand</p>
-            <p>@tyre.Price</p>
-            <p>@tyre.Quantity</p>
+            <div class="bag-image">
+            </div>
+            <div class="middletyre">
+                <main class="tyremain">
+                    <p>@tyre.Model</p>
+                    <p>@tyre.Brand</p>
+                    <p>@tyre.Price</p>
+                </main>
+                <aside class="tyreaside">
+                    <p><img class="img-thumbnail product-image" src="@tyre.Picture" alt="..."> </p>
+                </aside>
+            </div>
 
             <form id="quantity-form" action="EditTyreQuantity" controller="ShoppingBag" method="POST">
                 <label asp-for="@tyre.Quantity" class="control-label"></label>
@@ -25,21 +32,30 @@
                 <input type="hidden" value="@tyre.Id" name="bagTyreId" />
                 <input type="submit" value="Update Quantity" class="btn btn-primary" />
             </form>
-            <p></p>
+            <h4></h4>
+
             <form id="quantity-form" action="RemoveTyre" controller="ShoppingBag" method="POST">
                 <input type="hidden" value="@tyre.Id" name="bagTyreId" />
                 <input type="submit" value="Remove Tyre" class="btn btn-primary" />
             </form>
         }
     </div>
-    <div class="col-md-4 justify-content-center">
+    <h4></h4>
+
+    <div class="bagwheelrim justify-content-center">
         @foreach (var wheelRim in Model.WheelRims)
         {
-            <p><img class="img-thumbnail product-image" src="@wheelRim.Picture" alt="..."> </p>
-            <p>@wheelRim.Model</p>
-            <p>@wheelRim.Brand</p>
-            <p>@wheelRim.Price</p>
-            <p>@wheelRim.Quantity</p>
+            <div class="middletyre">
+                <main class="tyremain">
+                    <p>@wheelRim.Model</p>
+                    <p>@wheelRim.Brand</p>
+                    <p>@wheelRim.Price</p>
+                </main>
+                <aside class="tyreaside">
+                    <p><img class="img-thumbnail product-image" src="@wheelRim.Picture" alt="..."> </p>
+                </aside>
+            </div>
+
 
             <form id="quantity-form" action="EditWheelRimQuantity" controller="ShoppingBag" method="POST">
                 <label asp-for="@wheelRim.Quantity" class="control-label"></label>
@@ -47,51 +63,62 @@
                 <input type="hidden" value="@wheelRim.Id" name="bagWheelRimId" />
                 <input type="submit" value="Update Quantity" class="btn btn-primary" />
             </form>
-            <p></p>
+            <h4></h4>
+
             <form id="quantity-form" action="RemoveWheelRim" controller="ShoppingBag" method="POST">
                 <input type="hidden" value="@wheelRim.Id" name="bagWheelRimId" />
                 <input type="submit" value="Remove WheelRim" class="btn btn-primary" />
             </form>
         }
     </div>
-    <div class="col-md-4 justify-content-center">
+    <h4></h4>
+
+    <div class="bagmotoroil justify-content-center">
         @foreach (var motorOil in Model.MotorOils)
         {
-            <p><img class="img-thumbnail product-image" src="@motorOil.Picture" alt="..."> </p>
-            <p>@motorOil.Model</p>
-            <p>@motorOil.Brand</p>
-            <p>@motorOil.Price</p>
-            <p>@motorOil.Quantity</p>
+            <div class="middletyre">
+                <main class="tyremain">
+                    <p>@motorOil.Model</p>
+                    <p>@motorOil.Brand</p>
+                    <p>@motorOil.Price</p>
+                </main>
+                <aside class="tyreaside">
+                    <p><img class="img-thumbnail product-image" src="@motorOil.Picture" alt="..."> </p>
+                </aside>
+            </div>
+            
 
             <form id="quantity-form" action="EditMotorOilQuantity" controller="ShoppingBag" method="POST">
                 <label asp-for="@motorOil.Quantity" class="control-label"></label>
                 <input asp-for="@motorOil.Quantity" class="form-control" name="quantity" />
                 <input type="hidden" value="@motorOil.Id" name="motorOilId" />
+                <p></p>
                 <input type="submit" value="Update Quantity" class="btn btn-primary" />
             </form>
-
+            <h4></h4>
             <form id="quantity-form" action="RemoveMotorOil" controller="ShoppingBag" method="POST">
                 <input type="hidden" value="@motorOil.Id" name="bagMotorOilId" />
                 <input type="submit" value="Remove MotorOil" class="btn btn-primary" />
             </form>
         }
     </div>
+    <h2 class="text-primary" id="total-price">Total: @Model.Sum().ToString("F2")</h2>
+    <p></p>
+    <form id="quantity-form" action="ClearShoppingBag" controller="ShoppingBag" method="POST">
+        <input type="submit" value="Clear Bag" class="btn btn-primary" />
+    </form>
+    <p></p>
+    <p><a href="/Order/Create">Proceed to checkout</a></p>
 </div>
-<h2 class="text-primary" id="total-price">Total: @Model.Sum().ToString("F2")</h2>
-<p></p>
-<form id="quantity-form" action="ClearShoppingBag" controller="ShoppingBag" method="POST">
-    <input type="submit" value="Clear Bag" class="btn btn-primary" />
-</form>
-<p></p>
-<p><a href="/Order/Create">Proceed to checkout</a></p>
+
 
 
 
 @*<script>
-    $('#quantityvalue').change(function () {
-        $('#quantity-form').submit();
-    });
-</script>*@
+        $('#quantityvalue').change(function () {
+            $('#quantity-form').submit();
+        });
+    </script>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
