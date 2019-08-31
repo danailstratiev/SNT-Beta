@@ -1,4 +1,5 @@
-﻿using SNT.ViewModels.Home;
+﻿using SNT.ServiceModels;
+using SNT.ViewModels.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,5 +31,6 @@ namespace SNT.Services
         void RemoveWheelRimFromShoppingBag(string bagWheelRimId, string userId);
 
         void RemoveMotorOilFromShoppingBag(string bagMotorOilId, string userId);
+        Task<ShoppingBagServiceModel> AddTyreToShoppingBag();
     }
 }
