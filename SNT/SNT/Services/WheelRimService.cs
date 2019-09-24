@@ -10,7 +10,7 @@ using SNT.Services.Mapping;
 
 namespace SNT.Services
 {
-    public class WheelRimService : IWheelRimService
+    public class WheelRimService : IWheelRimService 
     {
         private SntDbContext context;
 

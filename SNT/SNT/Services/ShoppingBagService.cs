@@ -1,5 +1,6 @@
 ﻿using SNT.Data;
 using SNT.Models;
+using SNT.ServiceModels;
 using SNT.ViewModels.Home;
 using System;
 using System.Collections.Generic;
@@ -234,6 +235,11 @@ namespace SNT.Services
             this.context.Update(motorOilFromDb);
 
             this.context.SaveChanges();
+        }
+
+        public Task<ShoppingBagServiceModel> AddTyreToShoppingBag()
+        {
+            throw new NotImplementedException();
         }
     }
 }
